@@ -1,0 +1,16 @@
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Blue_Badge_Project.Models.dll
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Blue_Badge_Project.Models.pdb
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\obj\Debug\Blue_Badge_Project.Models.csprojAssemblyReference.cache
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\obj\Debug\Blue_Badge_Project.Models.csproj.CoreCompileInputs.cache
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\obj\Debug\Blue_Badge_Project.Models.dll
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\obj\Debug\Blue_Badge_Project.Models.pdb
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Blue_Badge_Project.Models.dll.config
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\EntityFramework.dll
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\EntityFramework.xml
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\joshu\OneDrive\Desktop\ElevenFiftyProjects\--Blue Badge--\Bob_and_the_Sideshow\Blue_Badge_Project.WebAPI\Blue_Badge_Project.Models\obj\Debug\Blue_Badge_Project.Models.csproj.CopyComplete

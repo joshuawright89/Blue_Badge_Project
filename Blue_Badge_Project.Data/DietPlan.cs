@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Blue_Badge_Project.Data
+{
+    public enum DietRestrictions
+    {
+        Sugar = 1, 
+        Gluten,
+        Carbs,
+        NoRestrictions
+
+    }
+    class DietPlan
+        
+    {
+        [Key]
+        public int DietId { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public bool BalancedDiet { get; set; }
+        [Required]
+        public bool Protein { get; set; }
+        [Required]
+        public bool Vegatarian  { get; set; }
+        [Required]
+        public bool Carbo { get; set; }
+        
+        public DietRestrictions DietaryRestrictions { get; set; }
+    }
+}

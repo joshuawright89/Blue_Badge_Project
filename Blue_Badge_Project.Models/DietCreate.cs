@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
-    class DietCreate
+    public class DietCreate
     {
         
         public string Name { get; set; }

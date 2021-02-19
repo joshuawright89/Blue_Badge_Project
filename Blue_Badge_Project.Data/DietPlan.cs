@@ -15,7 +15,7 @@ namespace Blue_Badge_Project.Data
         NoRestrictions
 
     }
-    class DietPlan
+    public class DietPlan
         
     {
         [Key]

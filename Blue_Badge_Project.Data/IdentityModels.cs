@@ -35,6 +35,7 @@ namespace Blue_Badge_Project.Data
 
         //(((2.02)))
         public DbSet<Client> Clients { get; set; }
+        public DbSet<DietPlan> DietaryPlan { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

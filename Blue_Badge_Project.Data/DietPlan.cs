@@ -23,6 +23,9 @@ namespace Blue_Badge_Project.Data
         [Required]
         public string Name { get; set; }
         [Required]
+        public string DietDesc { get; set; }
+        [Required]
+
         public bool BalancedDiet { get; set; }
         [Required]
         public bool Protein { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Services
 {
-    public class Class1
+    public class FitnessPlanService
     {
     }
 }

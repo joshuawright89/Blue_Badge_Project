@@ -13,7 +13,7 @@ namespace Blue_Badge_Project.Data
         public int SystemPlanId { get; set; }
 
         [ForeignKey(nameof(ApplicationUser))]
-        public int ApplicationUserIdId { get; set; }
+        public int ApplicationUserId { get; set; }
 
         public virtual ApplicationUserId ApplicationUserId{ get; set; }
 
@@ -22,10 +22,10 @@ namespace Blue_Badge_Project.Data
 
         public virtual FitnessPlanId FitnessPlanId { get; set; }
 
-        [ForeignKey(nameof(DietrayPlan))]
-        public int DietrayPlanId { get; set; }
+        [ForeignKey(nameof(DietPlan))]
+        public int DietPlanId { get; set; }
 
-        public virtual DietrayPlanIdId DietrayPlanId { get; set; }
+        public virtual DietPlanId DietPlanId { get; set; }
 
 
         [Required, Range(85, 400)]
@@ -42,4 +42,3 @@ namespace Blue_Badge_Project.Data
         public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
-5

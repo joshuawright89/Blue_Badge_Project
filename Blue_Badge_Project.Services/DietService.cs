@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Services
 {
-    class DietService
+    public class DietService
     {
         public bool CreateDiet(DietCreate model)
         {

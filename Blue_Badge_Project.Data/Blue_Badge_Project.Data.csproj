@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="FitnessPlan.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202102190043520_created fitnessPlanClass.cs" />

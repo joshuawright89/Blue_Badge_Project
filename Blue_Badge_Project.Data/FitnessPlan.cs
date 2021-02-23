@@ -21,12 +21,17 @@ namespace Blue_Badge_Project.Data
         [Required]
         public string Name { get; set; }
         [Required]
+        public string FitnessDesc { get; set; }
+        [Required]
         public bool WeightLoss { get; set; }
         [Required]
         public bool MuscleGain { get; set; }
         [Required]
         public bool Endurance { get; set; }
         [Required]
-        public FitRestrictions Restrictions { get; set; }
+        public FitRestrictions FitnessRestrictions { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }

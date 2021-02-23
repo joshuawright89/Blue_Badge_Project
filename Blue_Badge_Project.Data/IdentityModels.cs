@@ -16,6 +16,7 @@ namespace Blue_Badge_Project.Data
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+           
             // Add custom user claims here
             return userIdentity;
         }
@@ -35,7 +36,7 @@ namespace Blue_Badge_Project.Data
 
         //(((2.02)))
         public DbSet<Client> Client { get; set; }
-        public DbSet<SystemPlan> SystemPlan { get; set; }
+        public DbSet<SystemPlan> SystemPlan { get; set; } //for the systemPlan 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

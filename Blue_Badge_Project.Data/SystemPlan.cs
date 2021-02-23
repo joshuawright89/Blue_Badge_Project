@@ -10,15 +10,36 @@ namespace Blue_Badge_Project.Data
     public class SystemPlan
     {
         [Key]
-        public int UseId { get; set; }
-        [Required]
-        public string Title { get; set; }
-        [Required]
-        public string Content { get; set; }
+        public int SystemPlanId { get; set; }
+
+        [ForeignKey(nameof(ApplicationUser))]
+        public int ApplicationUserIdId { get; set; }
+
+        public virtual ApplicationUserId ApplicationUserId{ get; set; }
+
+        [ForeignKey(nameof(FitnessPlan))]
+        public int FitnessPlanId { get; set; }
+
+        public virtual FitnessPlanId FitnessPlanId { get; set; }
+
+        [ForeignKey(nameof(DietrayPlan))]
+        public int DietrayPlanId { get; set; }
+
+        public virtual DietrayPlanIdId DietrayPlanId { get; set; }
+
+
+        [Required, Range(85, 400)]
+        public double StartingWeight { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
+        [Required]
+        [MaxLength(200, ErrorMessage = "There are too many characters in this field.")]
+        public string SystemPlanGoal { get; set; }
+
+        [Required]
         public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
+5

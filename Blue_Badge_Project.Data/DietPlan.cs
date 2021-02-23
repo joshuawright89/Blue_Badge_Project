@@ -33,7 +33,10 @@ namespace Blue_Badge_Project.Data
         public bool Vegatarian  { get; set; }
         [Required]
         public bool Carbo { get; set; }
-        
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
         public DietRestrictions DietaryRestrictions { get; set; }
     }
 }

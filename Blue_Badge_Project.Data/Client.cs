@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
 {
+    /// <summary>
+    /// Added code for develop branch **** 1.6
+    /// </summary>
+    /// //
     public class Client
     {
         [Key]

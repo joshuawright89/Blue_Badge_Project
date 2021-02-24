@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
-    public class DietListItem
+   public class FitnessListItem
     {
-        public int DietId { get; set; }
+        public int FitnessId { get; set; }
         public string Name { get; set; }
         [Display(Name = "Description")]
-        public string DietDesc { get; set; }
+        public string FitDesc { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }

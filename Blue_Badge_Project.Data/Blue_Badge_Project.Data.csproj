@@ -93,7 +93,7 @@
     <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.cs" />
     <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.Designer.cs">
       <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
-    </Compile>
+		</Compile>
     <Compile Include="DietPlan.cs" />
     <Compile Include="SystemPlan.cs" />
     <Compile Include="IdentityModels.cs" />

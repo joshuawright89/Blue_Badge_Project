@@ -84,6 +84,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FitnessEdit.cs" />
+    <Compile Include="FitnessDetail.cs" />
+    <Compile Include="FitnessListItem.cs" />
+    <Compile Include="FitnessCreate.cs" />
     <Compile Include="DietCreate.cs" />
     <Compile Include="DietDetail.cs" />
     <Compile Include="DietEdit.cs" />
@@ -100,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blue_Badge_Project.Data\Blue_Badge_Project.Data.csproj">
-      <Project>{BA6918A3-DAE0-47C2-B734-8A916533848A}</Project>
+      <Project>{ba6918a3-dae0-47c2-b734-8a916533848a}</Project>
       <Name>Blue_Badge_Project.Data</Name>
     </ProjectReference>
   </ItemGroup>

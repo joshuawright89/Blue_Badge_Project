@@ -18,7 +18,7 @@ namespace Blue_Badge_Project.Models
 
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        [Display(Name = "Created")]
+       // [Display(Name = "Created")]
     }
 
 }

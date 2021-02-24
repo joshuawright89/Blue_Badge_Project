@@ -34,11 +34,20 @@ namespace Blue_Badge_Project.Data
             return new ApplicationDbContext();
         }
 
+
  
         public DbSet<Client> AppUser { get; set; }
         public DbSet<DietPlan> DietaryPlan { get; set; }
         public DbSet<SystemPlan> SystemPlan { get; set; } 
         //public DbSet<FitnessPlan> FitPlans { get; set; }
+
+        //(((2.02)))
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<FitnessPlan> FitPlans { get; set; }
+      //  public DbSet<DietPlan> DietaryPlan { get; set; }
+
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

@@ -26,4 +26,4 @@ namespace Blue_Badge_Project.Models
 
     }
 }
-}
+

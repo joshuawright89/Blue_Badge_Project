@@ -13,10 +13,10 @@ namespace Blue_Badge_Project.Data
         [Key]
         public int SystemPlanId { get; set; }
 
-        [ForeignKey(nameof(AppUser))]
+       // [ForeignKey(nameof(AppUser))]
         public int AppUserId { get; set; }
 
-        public virtual AppUser AppUser{ get; set; }
+       // public virtual AppUser AppUser{ get; set; }
 
         [ForeignKey(nameof(FitnessPlan))]
         public int FitnessPlanId { get; set; }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -86,15 +86,14 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="FitnessPlan.cs" />
-    <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202102190043520_created fitnessPlanClass.cs" />
     <Compile Include="Migrations\202102190043520_created fitnessPlanClass.Designer.cs">
       <DependentUpon>202102190043520_created fitnessPlanClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.cs" />
-	  <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.Designer.cs">
-		  <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.Designer.cs">
+      <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="DietPlan.cs" />
     <Compile Include="SystemPlan.cs" />
     <Compile Include="IdentityModels.cs" />
@@ -105,9 +104,7 @@
     <Compile Include="Migrations\202102221702303_DietPlan.cs" />
     <Compile Include="Migrations\202102221702303_DietPlan.Designer.cs">
       <DependentUpon>202102221702303_DietPlan.cs</DependentUpon>
-
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\202102190009556_init Migration.cs" />
     <Compile Include="Migrations\202102190009556_init Migration.Designer.cs">
       <DependentUpon>202102190009556_init Migration.cs</DependentUpon>
@@ -127,9 +124,9 @@
     <EmbeddedResource Include="Migrations\202102190043520_created fitnessPlanClass.resx">
       <DependentUpon>202102190043520_created fitnessPlanClass.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.resx">
-		  <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
-	  </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.resx">
+      <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102190016007_firstmigrations.resx">
       <DependentUpon>202102190016007_firstmigrations.cs</DependentUpon>
     </EmbeddedResource>

@@ -55,7 +55,6 @@ namespace Blue_Badge_Project.Data
         
     }
 
-    //(((2.02)))
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()

@@ -9,6 +9,8 @@ namespace Blue_Badge_Project.Models
 {
     public class SystemPlanCreate
     {
+        public int SysId { get; set; }
+
         [Required]
         [Range(85, 400)]
         public double StartingWeight { get; set; }

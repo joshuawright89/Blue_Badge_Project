@@ -35,7 +35,6 @@ namespace Blue_Badge_Project.Data
         [ForeignKey(nameof(DietPlan))]
         public Guid DietId { get; set; }
 
-        [Required]
         public virtual DietPlan DietPlan{ get; set; }
 
 

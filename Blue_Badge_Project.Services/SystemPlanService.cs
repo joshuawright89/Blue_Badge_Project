@@ -17,18 +17,18 @@ namespace Blue_Badge_Project.Services
             _systemId = systemId;
         }
 
-        public bool CreateSystemPlan(SystemPlanCreate model)
+        public bool CreateSystemPlan(SystemPlanCreate plan)
         {
             var entity =
                 new SystemPlan()
                 {
-                    SysId = model.SysId,
+                    SysId = plan.SysId,
                     UserId = _systemId,
                     FitnessId = _systemId,
                     DietId = _systemId,
                     //Name = plan.Name,
-                    StartingWeight = model.StartingWeight,
-                    PlanGoal = model.PlanGoal,
+                    StartingWeight = plan.StartingWeight,
+                    PlanGoal = plan.PlanGoal,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
@@ -60,18 +60,18 @@ namespace Blue_Badge_Project.Services
         }
 
 
-        public bool UpdatePlan(SystemPlanEdit model)
+        public bool UpdatePlan(SystemPlanEdit plan)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .SystemPlan
-                    .Single(e => e.SysId == model.SysId); 
+                    .Single(e => e.SysId == plan.SysId); 
 
                 //entity.Name = plan.Name;
-                entity.StartingWeight = model.StartingWeight;
-                entity.PlanGoal = model.PlanGoal;
+                entity.StartingWeight = plan.StartingWeight;
+                entity.PlanGoal = plan.PlanGoal;
 
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
                 return ctx.SaveChanges() > 0;

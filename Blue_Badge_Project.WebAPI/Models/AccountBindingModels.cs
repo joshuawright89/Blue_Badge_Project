@@ -32,7 +32,7 @@ namespace Blue_Badge_Project.WebAPI.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class RegisterBindingModel
+    public class RegisterBindingModel // this is where you will put the properties from AppUserCreate
     {
         [Required]
         [Display(Name = "Email")]

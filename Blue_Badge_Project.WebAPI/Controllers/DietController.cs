@@ -12,7 +12,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class DietController : ApiController
     {
-        public IHttpActionResult Post(DietCreate diet)
+        /*public IHttpActionResult Post(DietCreate diet)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -60,6 +60,6 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             var appId = Guid.Parse(User.Identity.GetDietById());
             var dietService = new DietService(userId);
             return dietService;
-        }
+        }*/
     }
 }

@@ -30,7 +30,7 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
-        public DietDetail GetDietById(int DietId)
+        /*public DietDetail GetDietById(int DietId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -86,7 +86,7 @@ namespace Blue_Badge_Project.Services
                 ctx.DietaryPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
             }
-        }
+        }*/
 
         // HELPER METHOD
         // SEE ALL NOTES FOR SPECIFIC USER
@@ -97,7 +97,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .DietaryPlan
-                        .Where(e => e.OwnerId == _userId)// -->needs AppID created to fix
+                        //.Where(e => e.OwnerId == _userId)// -->needs AppID created to fix
 
                         .Select(
                         e =>

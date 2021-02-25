@@ -94,6 +94,7 @@
     <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.cs" />
     <Compile Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.Designer.cs">
       <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
+	</Compile>
     <Compile Include="DietPlan.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202102190016007_firstmigrations.cs" />
@@ -118,6 +119,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102190104410_deleteClientinIdentityOnlyFitPlan.resx">
       <DependentUpon>202102190104410_deleteClientinIdentityOnlyFitPlan.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102190016007_firstmigrations.resx">
       <DependentUpon>202102190016007_firstmigrations.cs</DependentUpon>
     </EmbeddedResource>

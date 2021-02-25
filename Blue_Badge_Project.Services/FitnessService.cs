@@ -29,7 +29,7 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
-        public FitnessDetail GetFitnessById(int FitnessId)
+        /*public FitnessDetail GetFitnessById(int FitnessId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -50,8 +50,8 @@ namespace Blue_Badge_Project.Services
 
                    };
             }
-        }
-        public bool UpdateFitness(FitnessEdit model)
+        }*/
+        /*public bool UpdateFitness(FitnessEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -104,6 +104,6 @@ namespace Blue_Badge_Project.Services
                         );
                 return query.ToArray();
             }
-        }
+        }*/
     }
 }

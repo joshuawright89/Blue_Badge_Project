@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
-    class SystemPlanCreate
+    public class SystemPlanCreate
     {
-        [Required, Range(85, 400)]
+        [Required]
+        [Range(85, 400)]
         public double StartingWeight { get; set; }
 
         [Required]
         [MaxLength(200, ErrorMessage = "There are too many characters in this field.")]
-        public string SystemPlanGoal { get; set; }
+        public string PlanGoal { get; set; }//does this need to be an Diet/Fitness==or enum
     }
 }

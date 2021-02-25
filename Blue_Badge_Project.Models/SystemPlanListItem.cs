@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
-    class SystemPlanListItem
+    public class SystemPlanListItems
     {
-        public int SystemPlanId { get; set; }
+        private int SysPlanId { get; set; }
+
+        public int _userId { get; set; }
+
         public double StartingWeight { get; set; }
 
-        public DateTimeOffset CreatedUtc { get; set; }
+        public string PlanGoal { get; set; } //does this need to be an Diet/Fitness==or enum
 
-        public string SystemPlanGoal { get; set; }
-
-        public DateTimeOffset? ModifiedUtc { get; set; }
-
-       // [Display(Name = "Created")]
     }
-
 }

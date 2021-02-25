@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
-    class SystemPlanEdit
+    public class SystemPlanEdit
     {
-        public int SystemPlanId { get; set; }
+        public int SysId { get; set; }
 
         public double StartingWeight { get; set; }
 
-        public string SystemPlanGoal { get; set; }
+        public string PlanGoal { get; set; }//does this need to be an Diet/Fitness==or enum
 
     }
 }

@@ -9,7 +9,7 @@ namespace Blue_Badge_Project.Models
 {
     public class SystemPlanListItems
     {
-        private int SysPlanId { get; set; }
+        public int SysId { get; set; }
 
         public int _userId { get; set; }
 

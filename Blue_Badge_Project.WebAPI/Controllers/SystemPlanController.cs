@@ -1,5 +1,6 @@
 ﻿using Blue_Badge_Project.Models;
 using Blue_Badge_Project.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            SystemPlanService systemPlanService = new SystemPlanService();
-            var plan = systemPlanService.GetPlan();
+            SystemPlanService systemPlanService = CreateSystemPlanService();
+            var plan = systemPlanService.GetSystemPlan();
             return Ok(plan);
         }
 
@@ -38,7 +39,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         public IHttpActionResult GetId(int id)
         {
             SystemPlanService systemPlanService = CreateSystemPlanService();
-            var plan = systemPlanService.GetPlanById(id);
+            var plan = systemPlanService.GetSysIdById(id);
             return Ok(plan);
         }
 

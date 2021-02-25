@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Services
-    {
+{
     public class SystemPlanService
     {
         private readonly Guid _userId;
@@ -36,6 +36,8 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
+
+
         public SystemPlanDetail GetSysIdById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -55,6 +57,8 @@ namespace Blue_Badge_Project.Services
                    };
             }
         }
+
+
         public bool UpdatePlan(SystemPlanEdit plan)
         {
             using (var ctx = new ApplicationDbContext())
@@ -72,19 +76,46 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
-        public bool DeletePlan(int planId)
+
+
+        public bool DeletePlan(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .SystemPlan
-                    .Single(e => e.SysId == planId); //UserId, FitnessId and DietId
+                    .Single(e => e.SysId == id); //UserId, FitnessId and DietId
 
                 ctx.SystemPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
             }
         }
+
+        public IEnumerable<SystemPlanListItems> GetSystemPlan()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .SystemPlan
+                        .Where(e => e.FitnessId == _userId)// -->Fitness is the WRONG
+
+                        .Select(
+                        e =>
+                        new SystemPlanListItems
+                        {
+                            SysId = e.SysId,
+                            //Name = e.Name,
+                            StartingWeight = e.StartingWeight,
+                            PlanGoal = e.PlanGoal,
+
+                        }
+                   );
+                return query.ToArray();
+            }
+        }
     }
 }
+
 

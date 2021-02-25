@@ -28,7 +28,7 @@ namespace Blue_Badge_Project.Services
                     DietId = _systemId,
                     //Name = plan.Name,
                     StartingWeight = plan.StartingWeight,
-                    SystemPlanGoal = plan.PlanGoal,
+                    PlanGoal = plan.PlanGoal,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())

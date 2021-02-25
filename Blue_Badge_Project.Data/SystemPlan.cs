@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
 {
+    public enum PlanGoal
+    {
+        LooseWeight = 1,
+        GainMuscleMass,
+        BecomeHealthly,
+        NoRestrictions
+    }
     public class SystemPlan
     {
         [Key]
@@ -37,9 +44,6 @@ namespace Blue_Badge_Project.Data
         [Required, Range(85, 400)]
         public double StartingWeight { get; set; }
 
-        [Required]
-        [MaxLength(200, ErrorMessage = "There are too many characters in this field.")]
-        public string SystemPlanGoal { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }

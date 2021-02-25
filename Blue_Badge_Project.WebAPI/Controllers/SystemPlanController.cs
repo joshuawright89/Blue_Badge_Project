@@ -12,11 +12,11 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class SystemPlanController : ApiController
     {
-
+        
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            SystemPlanService systemPlanService = CreateSystemPlanService();
+            SystemPlanService systemPlanService = new SystemPlanService();
             var plan = systemPlanService.GetPlan();
             return Ok(plan);
         }

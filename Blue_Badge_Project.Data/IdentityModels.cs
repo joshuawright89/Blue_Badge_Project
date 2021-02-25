@@ -9,15 +9,12 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace Blue_Badge_Project.Data
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
            
-            // Add custom user claims here
             return userIdentity;
         }
     }
@@ -36,15 +33,11 @@ namespace Blue_Badge_Project.Data
 
 
  
-        public DbSet<Client> AppUser { get; set; }
+        //public DbSet<AppUser> AppUser { get; set; }
         public DbSet<DietPlan> DietaryPlan { get; set; }
-        public DbSet<SystemPlan> SystemPlan { get; set; } 
-        //public DbSet<FitnessPlan> FitPlans { get; set; }
-
-        //(((2.02)))
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<SystemPlan> SystemPlan { get; set; }
         public DbSet<FitnessPlan> FitPlans { get; set; }
-      //  public DbSet<DietPlan> DietaryPlan { get; set; }
+    
 
 
 

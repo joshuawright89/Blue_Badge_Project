@@ -23,13 +23,16 @@ namespace Blue_Badge_Project.Data
 
         [ForeignKey(nameof(FitnessPlan))]
         public Guid FitnessId { get; set; }
-
         public virtual FitnessPlan FitnessPlan { get; set; }
 
         [ForeignKey(nameof(DietPlan))]
         public Guid DietId { get; set; }
 
-        public virtual DietPlan DietPlan { get; set; }
+        public virtual DietPlan DietPlan{ get; set; }
+
+
+        [Required]
+        public string PlanGoal { get; set; }
 
         [Required, Range(85, 400)]
         public double StartingWeight { get; set; }

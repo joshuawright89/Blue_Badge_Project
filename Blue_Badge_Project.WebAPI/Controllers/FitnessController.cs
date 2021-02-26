@@ -51,13 +51,9 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         }
         private FitnessService CreateFitnessService()
         {
-            var appId = Guid.Parse(UserIdentity.GetFitnessById());
-            var fitnessService = new FitnessService(userId);
-            return fitnessService;
+          var appId = Guid.Parse(UserIdentity.GetFitnessById());
+          var fitnessService = new FitnessService(userId);
+           return fitnessService;
         }
-
-
-
-
     }
 }

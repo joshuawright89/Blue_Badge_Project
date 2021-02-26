@@ -79,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FitnessService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DietService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

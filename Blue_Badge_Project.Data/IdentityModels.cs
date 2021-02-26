@@ -11,7 +11,7 @@ namespace Blue_Badge_Project.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
-    {
+    {        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -20,7 +20,6 @@ namespace Blue_Badge_Project.Data
             return userIdentity;
         }
     }
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -32,9 +31,7 @@ namespace Blue_Badge_Project.Data
         {
             return new ApplicationDbContext();
         }
-
         //(((2.02)))
-        public DbSet<Client> Clients { get; set; }
         public DbSet<FitnessPlan> FitPlans { get; set; }
         public DbSet<DietPlan> DietaryPlan { get; set; }
 
@@ -51,7 +48,6 @@ namespace Blue_Badge_Project.Data
                 .Add(new IdentityUserRoleConfiguration());
         }
     }
-
     //(((2.02)))
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {

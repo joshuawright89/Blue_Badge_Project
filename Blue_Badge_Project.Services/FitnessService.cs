@@ -59,39 +59,38 @@ namespace Blue_Badge_Project.Services
                     ctx
                     .FitPlans
                     .Single(e => e.FitnessId == model.FitnessId && e.OwnerId == _userId);
+                    
+        //        entity.Name = model.Name;
+        //        entity.FitDesc = model.FitnessDesc;
+        //        entity.WeightLoss = model.FitnessDesc;
+        //        entity.MuscleGain = model.MuscleGain;
+        //        entity.Endurance = model.Endurance;
+        //        entity.FitnessRestrictions = model.FitnessRestriction;
+        //        entity.ModifiedUtc = DateTimeOffset.UtcNow;
+        //        return ctx.SaveChanges() > 0;
+        //    }
+        //}
+        //public bool DeleteFitness(int fitnessId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //            .FitPlans
+        //            .Single(e => e.FitnessId == fitnessId && e.OwnerId == _userId);
 
-                entity.Name = model.Name;
-                entity.FitDesc = model.FitnessDesc;
-                entity.WeightLoss = model.FitnessDesc;
-                entity.MuscleGain = model.MuscleGain;
-                entity.Endurance = model.Endurance;
-                entity.FitnessRestrictions = model.FitnessRestriction;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                return ctx.SaveChanges() > 0;
-            }
-        }
-        public bool DeleteFitness(int fitnessId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .FitPlans
-                    .Single(e => e.FitnessId == fitnessId && e.OwnerId == _userId);
-
-                ctx.FitPlans.Remove(entity);
-                return ctx.SaveChanges() > 0;
-            }
-        }
-        public IEnumerable<FitnessListItem> GetFitness()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .FitPlans
-                        .Where(e => e.OwnerId == _userId)
-
+        //        ctx.FitPlans.Remove(entity);
+        //        return ctx.SaveChanges() > 0;
+        //    }
+        //}
+        //public IEnumerable<FitnessListItem> GetFitness()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .FitPlans
+        //                .Where(e => e.OwnerId == _userId)
                         .Select(
                         e =>
                         new FitnessListItem

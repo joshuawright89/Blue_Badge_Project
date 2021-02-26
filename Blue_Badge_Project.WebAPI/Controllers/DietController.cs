@@ -22,37 +22,37 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get()
-        {
-            DietService dietService = CreateDietService();
-            var diets = dietService.GetDiets();
-            return Ok(diets);
-        }
 
-        public IHttpActionResult Get(int dietId)
-        {
-            DietService dietService = CreateDietService();
-            var diet = dietService.GetDietById(dietId);
-            return Ok(diet);
-        }
-        public IHttpActionResult Put(DietEdit diet)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            var service = CreateDietService();
-            if (!service.UpdateDiet(diet))
-                return InternalServerError();
-            return Ok();
-        }
+    //    public IHttpActionResult Get()
+    //    {
+    //        DietService dietService = CreateDietService();
+    //        var diets = dietService.GetDiets();
+    //        return Ok(diets);
+    //    }
 
-        public IHttpActionResult Delete(int dietId)
-        {
-            var service = CreateDietService();
-            if (!service.DeleteDiet(dietId))
-                return InternalServerError();
-            return Ok();
-        }
+    //    public IHttpActionResult Get(int dietId)
+    //    {
+    //        DietService dietService = CreateDietService();
+    //        var diet = dietService.GetDietById(dietId);
+    //        return Ok(diet);
+    //    }
+    //    public IHttpActionResult Put(DietEdit diet)
+    //    {
+    //        if (!ModelState.IsValid)
+    //            return BadRequest(ModelState);
+    //        var service = CreateDietService();
+    //        if (!service.UpdateDiet(diet))
+    //            return InternalServerError();
+    //        return Ok();
+    //    }
 
+    //    public IHttpActionResult Delete(int dietId)
+    //    {
+    //        var service = CreateDietService();
+    //        if (!service.DeleteDiet(dietId))
+    //            return InternalServerError();
+    //        return Ok();
+    //    }
 
         //Need app user table done 
         private DietService CreateDietService()

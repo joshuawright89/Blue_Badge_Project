@@ -13,10 +13,8 @@ namespace Blue_Badge_Project.Data
         Gluten,
         Carbs,
         NoRestrictions
-
     }
-    public class DietPlan
-        
+    public class DietPlan   
     {
         [Key]
         public int DietId { get; set; }

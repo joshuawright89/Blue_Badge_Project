@@ -19,6 +19,7 @@ namespace Blue_Badge_Project.Data
         }
     }
 
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

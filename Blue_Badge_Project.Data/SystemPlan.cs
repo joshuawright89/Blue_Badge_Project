@@ -20,13 +20,10 @@ namespace Blue_Badge_Project.Data
         [Key]
         public int SysId { get; set; }
 
-        //[Required]
-        //public string Name { get; set; } //Not is the ProjectWireFrame
-
         [ForeignKey(nameof(UserId))]
-         public Guid UserId { get; set; }
+         public string UserId { get; set; }
 
-         public virtual ApplicationUser ApplicationUser{ get; set; }
+        public virtual ApplicationUser ApplicationUser{ get; set; }
 
         [ForeignKey(nameof(FitnessPlan))]
         public Guid FitnessId { get; set; }

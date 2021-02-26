@@ -23,7 +23,7 @@ namespace Blue_Badge_Project.Services
                 new SystemPlan()
                 {
                     SysId = plan.SysId,
-                    UserId = _systemId,
+                    UserId = _systemId.ToString(),
                     FitnessId = _systemId,
                     DietId = _systemId,
                     //Name = plan.Name,
@@ -100,7 +100,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .SystemPlan
-                        .Where(e => e.UserId == _systemId)
+                        .Where(e => e.UserId == _systemId.ToString())
 
                         .Select(
                         e =>

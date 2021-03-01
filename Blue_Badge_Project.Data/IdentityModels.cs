@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -19,6 +21,30 @@ namespace Blue_Badge_Project.Data
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Key]
+        public int AppUserId { get; set; }
+        [Required]
+        public Guid OwnerId { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string Password { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime DateOfBirth { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime DateJoined { get; set; }
+
+
+        public int WeightInLbs { get; set; }
+        public int HeightInCentimeters { get; set; }
+
+        public GenderEnum Gender { get; set; }
+        public GoalEnum Goal { get; set; }
+        public BodyTypeEnum BodyType { get; set; }
 
     }
 

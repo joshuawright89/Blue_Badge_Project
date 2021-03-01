@@ -329,7 +329,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, AppUserId = model.AppUserId, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, HeightInCentimeters = model.HeightInCentimeters, WeightInLbs = model.WeightInLbs, Gender = model.Gender, Goal = model.Goal, BodyType = model.BodyType };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -340,6 +340,15 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
             return Ok();
         }
+        //AppUserId
+        //FirstName
+        //LastName
+        //Dob
+        //Height
+        //Weight
+        //Gender
+        //Goal
+        //BodyType
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]

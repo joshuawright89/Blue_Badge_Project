@@ -10,7 +10,7 @@ namespace Blue_Badge_Project.Services
 {
     public class AppUserService  //"The service layer is how our application interacts with the database. In this section, we will create the NoteService that will push and pull notes from the database"
     {
-        //CONSTRUCTORS - GUID
+        //CONSTRUCTOR - GUID
         private readonly Guid _ownerId;
         public AppUserService(Guid ownerId)
         {
@@ -23,13 +23,14 @@ namespace Blue_Badge_Project.Services
             _lastName = lastName;
         }
 
+        //CONSTRUCTOR - GENDER
         private readonly GenderEnum _gender;
         public AppUserService(GenderEnum gender)
         {
             _gender = gender;
         }
 
-        public bool CreateAppUser(AppUserCreate model) //4.02  THIS LIKELY WILL MOVE ELSEWHERE!!
+        public bool CreateAppUser(AppUserCreate model) //4.02  THIS LIKELY WILL MOVE ELSEWHERE! "This will create an instance of [AppUser]."
         {
             var entity =
                 new AppUser()
@@ -38,10 +39,10 @@ namespace Blue_Badge_Project.Services
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    Height = model.Height,
-                    Weight = model.Weight,
+                    HeightInCentimeters = model.Height,
+                    WeightInLbs = model.Weight,
                     Gender = model.Gender,
-                    BodyType = model.BodyType,
+                    BodyType = (BodyTypeEnum)model.BodyType,
                     Goal = model.Goal,
                     DateJoined = DateTime.Now
                 };
@@ -53,14 +54,14 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-        public IEnumerable<AppUserListItem> GetAppUsersByDietPlan()  //"This method will allow us to see all the [AppUsers] that belong to a specific [DietPlan]." (((4.02)))
+        public IEnumerable<AppUserListItem> GetAppUsersBySystemPlan()  //"This method will allow us to see all the [AppUsers] that belong to a specific [SystemPlan]." (((4.02)))
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .AppUsers
-                    .Where(e => e.FitnessPlan == _fitnessPlan)
+                    .Where(e => e.SystemPlan == _systemPlan)
                     .Select(
                         e =>
                         new AppUserListItem
@@ -74,7 +75,7 @@ namespace Blue_Badge_Project.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<AppUserListItem> GetAppUsersByFitnessPlan()  //"This method will allow us to see all the [AppUsers] that belong to a specific [FitnessPlan]." (((4.02)))
+        public IEnumerable<AppUserListItem> GetAppUsersByDietPlan()  //"This method will allow us to see all the [AppUsers] that belong to a specific [DietPlan]." (((4.02)))
         {
             using (var ctx = new ApplicationDbContext())
             {

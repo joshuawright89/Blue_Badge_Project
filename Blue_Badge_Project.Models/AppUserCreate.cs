@@ -1,6 +1,7 @@
 ﻿using Blue_Badge_Project.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,11 +17,19 @@ namespace Blue_Badge_Project.Models
 
     public class AppUserCreate //What properties do we need to GIVE when creating a new user?
     {
+        [Required]
+        [MaxLength(20, ErrorMessage = "Do not exceed twenty (20) characters.")]
         public string AppUserId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
         public DateTime DateOfBirth { get; set; }
+
         public int Height { get; set; }
         public int Weight { get; set; }
         
@@ -39,7 +48,7 @@ namespace Blue_Badge_Project.Models
         //    ToneMuscle
         //}
 
-        public BodyTypeEnum BodyType { get; set; }
+        public BodyTypeEnum? BodyType { get; set; }
         //public enum BodyTypeEnum
         //{
         //    Ectomorph = 1,
@@ -48,7 +57,7 @@ namespace Blue_Badge_Project.Models
         //}
 
 
-        //Do not need to GIVE it four properties: age, date, AppId, or password
+        //Do not need to GIVE it four properties: date joined, OwnerId(Guid), or password
 
     }
 }

@@ -1,3 +1,4 @@
+﻿using Blue_Badge_Project.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -5,37 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blue_Badge_Project.Data
+namespace Blue_Badge_Project.Models
 {
-    public enum FitRestrictions
+    public class FitnessDetail
     {
-        LowImpact = 1,
-        Asthma,
-        HighBloodPressure,
-        NoRestrictions
-    }
-    public class FitnessPlan
-    {
-        [Key]
         public int FitnessId { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string FitnessDesc { get; set; }
-        [Required]
         public bool WeightLoss { get; set; }
-        [Required]
         public bool MuscleGain { get; set; }
-        [Required]
         public bool Endurance { get; set; }
-        [Required]
-        public FitRestrictions Restrictions { get; set; }
-    }
-
-}
         public FitRestrictions FitnessRestrictions { get; set; }
-        [Required]
+        [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+        [Display(Name = "Modified")]
         public DateTimeOffset ModifiedUtc { get; set; }
     }
 }
+

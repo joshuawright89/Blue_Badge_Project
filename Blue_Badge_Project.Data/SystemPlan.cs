@@ -12,12 +12,12 @@ namespace Blue_Badge_Project.Data
     {
         [Key]
         public int SystemPlanId { get; set; }
-        [ForeignKey]
+        //[ForeignKey]
         public int UserId { get; set; }
-        [ForeignKey]
+        //[ForeignKey]
         public int FitnessId { get; set; }
-        [ForeignKey]
-        public int DietId { get; set }
+        //[ForeignKey]
+        public int DietId { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

@@ -10,12 +10,12 @@ namespace Blue_Badge_Project.Services
 {
     public class AppUserService  //"The service layer is how our application interacts with the database. In this section, we will create the NoteService that will push and pull notes from the database"
     {
-        //CONSTRUCTOR - GUID
-        private readonly Guid _ownerId;
-        public AppUserService(Guid ownerId)
+        private readonly int _userId;
+        public AppUserService(int userId)
         {
-            _ownerId = ownerId;
+            _userId = userId;
         }
+
         //CONSTRUCTOR - LAST NAME
         private readonly string _lastName;
         public AppUserService(string lastName)
@@ -30,37 +30,37 @@ namespace Blue_Badge_Project.Services
             _gender = gender;
         }
 
-        public bool CreateAppUser(AppUserCreate model) //4.02  THIS LIKELY WILL MOVE ELSEWHERE! "This will create an instance of [AppUser]."
+        public bool CreateAppUser(AppUserCreate model) //4.02  THIS LIKELY WILL MOVE ELSEWHERE! "This will create an instance of [ApplicationUser]."
         {
             var entity =
-                new AppUser()
+                new ApplicationUser()
                 {
-                    AppUserId = model.AppUserId,
+                    UserId = model.UserId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
                     HeightInCentimeters = model.Height,
                     WeightInLbs = model.Weight,
                     Gender = model.Gender,
-                    BodyType = (BodyTypeEnum)model.BodyType,
+                    BodyType = model.BodyType,
                     Goal = model.Goal,
                     DateJoined = DateTime.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.AppUsers.Add(entity);
+                ctx.Users.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<AppUserListItem> GetAppUsersBySystemPlan()  //"This method will allow us to see all the [AppUsers] that belong to a specific [SystemPlan]." (((4.02)))
+        /*public IEnumerable<AppUserListItem> GetAppUsersBySystemPlan()  //"This method will allow us to see all the [AppUsers] that belong to a specific [SystemPlan]." (((4.02)))
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .AppUsers
+                    .Users
                     .Where(e => e.SystemPlan == _systemPlan)
                     .Select(
                         e =>
@@ -81,7 +81,7 @@ namespace Blue_Badge_Project.Services
             {
                 var query =
                     ctx
-                    .AppUsers
+                    .Users
                     .Where(e => e.DietPlan == _dietPlan)
                     .Select(
                         e =>
@@ -95,22 +95,22 @@ namespace Blue_Badge_Project.Services
                         );
                 return query.ToArray();
             }
-        }
+        }*/
 
 
-        public IEnumerable<AppUserListItem> GetAppUsersByLastName()  //Search by last name
+        public IEnumerable<AppUserListItem> GetAppUsersByLastName(string LastName)  //Search by last name
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .AppUsers
+                    .Users
                     .Where(e => e.LastName == _lastName)
                     .Select(
                         e =>
                         new AppUserListItem
                         {
-                            AppUserId = e.AppUserId,
+                            AppUserId = e.UserId,
                             FirstName = e.FirstName,
                             LastName = e.LastName,
                             Gender = e.Gender
@@ -120,21 +120,27 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-        public AppUserDetail GetAppUserById(int id)
+        public AppUserDetail GetAppUserByGuid(int OwnerId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .AppUsers.Single(e => e.LastName == _lastName && e.OwnerId == _ownerId);
+                    .Users.Single(e => e.LastName == _lastName && e.UserId == _userId);
                 return
                     new AppUserDetail
                     {
-                        NoteId = entity.NoteId,
-                        Title = entity.Title,
-                        Content = entity.Content,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifedUtc = entity.ModifiedUtc
+                        AppUserId = entity.UserId,
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName,
+                        Email = entity.Email,
+                        DateOfBirth = entity.DateOfBirth,
+                        DateJoined = entity.DateJoined,
+                        WeightInLbs = entity.WeightInLbs,
+                        HeightInCentimeters = entity.HeightInCentimeters,
+                        Gender = entity.Gender,
+                        Goal = entity.Goal,
+                        BodyType = entity.BodyType
                     };
             }
         }

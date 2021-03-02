@@ -12,7 +12,7 @@ namespace Blue_Badge_Project.Models
     public class AppUserListItem //What properties to display when seeing a list of App Users??
     {
         [Display(Name = "User ID:")]
-        public string AppUserId { get; set; }
+        public int AppUserId { get; set; }
         [Display(Name = "First:")]
         public string FirstName { get; set; }
         [Display(Name = "Last:")]

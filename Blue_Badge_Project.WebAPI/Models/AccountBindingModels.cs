@@ -70,16 +70,6 @@ namespace Blue_Badge_Project.WebAPI.Models
         // BodyType
         public BodyTypeEnum BodyType { get; set; }
         
-        //AppUserId
-        //FirstName
-        //LastName
-        //Dob
-        //Height
-        //Wiehgt
-        //Gender
-        //Goal
-        //BodyType
-
     }
 
     public class RegisterExternalBindingModel

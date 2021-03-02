@@ -23,9 +23,7 @@ namespace Blue_Badge_Project.Data
         }
 
         [Key]
-        public int AppUserId { get; set; }
-        [Required]
-        public Guid OwnerId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -59,9 +57,6 @@ namespace Blue_Badge_Project.Data
         {
             return new ApplicationDbContext();
         }
-
-        //(((2.02)))
-         public DbSet<AppUser> AppUsers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

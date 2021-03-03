@@ -120,7 +120,7 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-        public AppUserDetail GetAppUserByGuid(int OwnerId)
+        public AppUserDetail GetAppUserByGuid(int UserId)
         {
             using (var ctx = new ApplicationDbContext())
             {

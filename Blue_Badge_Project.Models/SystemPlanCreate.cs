@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
-    public enum PlanGoal
+   /* public enum PlanGoal
     {
         LooseWeight = 1,
         GainMuscleMass,
         BecomeHealthly,
         NoRestrictions
-    }
+    }*/
+
     public class SystemPlanCreate
     {
         public int SysId { get; set; }

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Blue_Badge_Project.Data;
 using Newtonsoft.Json;
+using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.WebAPI.Models
 {

@@ -10,7 +10,7 @@ namespace Blue_Badge_Project.Models
 {
     public class FitnessEdit
     {
-        public int FitnessId { get; set; }
+        public int FitId { get; set; }
         public string Name { get; set; }
         public string FitnessDesc { get; set; }
         public bool WeightLoss { get; set; }

@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Services
 {
-    class DietService
+    public class DietService
     {
-        public bool CreateDiet(DietCreate model)
+            private readonly int _dietId;
+
+            public DietService(int dietId)
+            {
+                _dietId = dietId;
+            }
+            public bool CreateDiet(DietCreate model)
         {
             var entity =
                 new DietPlan()
@@ -30,15 +36,15 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
-        /*public DietDetail GetDietById(int DietId)
+        public DietDetail GetDietById(int dietId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .DietaryPlan
-                    .Single(e => e.DietId == DietId && e.OwnerId == _userId); // ---> needs AppID created to fix
-                return
+                    .Single(e => e.DietId == _dietId);
+                return 
                     new DietDetail
                     {
                         Name = entity.Name,
@@ -53,66 +59,66 @@ namespace Blue_Badge_Project.Services
             }
         }
    
-    //    public bool UpdateDiet(DietEdit model)
-    //    {
-    //        using (var ctx = new ApplicationDbContext())
-    //        {
-    //            var entity =
-    //                ctx
-    //                .DietaryPlan
-    //                .Single(e => e.DietId == model.DietId && e.OwnerId == _userId);// -->needs AppID created to fix
+        public bool UpdateDiet(DietEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .DietaryPlan
+                    .Single(e => e.DietId == _dietId);
 
-    //            entity.Name = model.Name;
-    //            entity.DietDesc = model.DietDesc;
-    //            entity.BalancedDiet = model.BalancedDiet;
-    //            entity.Protein = model.Protein;
-    //            entity.Vegatarian = model.Vegatarian;
-    //            entity.Carbo = model.Carbo;
-    //            entity.DietaryRestrictions = model.DietaryRestrictions;
-    //            entity.ModifiedUtc = DateTimeOffset.UtcNow;
-    //            return ctx.SaveChanges() > 0;
-    //        }
-    //    }
+                entity.Name = model.Name;
+                entity.DietDesc = model.DietDesc;
+                entity.BalancedDiet = model.BalancedDiet;
+                entity.Protein = model.Protein;
+                entity.Vegatarian = model.Vegatarian;
+                entity.Carbo = model.Carbo;
+                entity.DietaryRestrictions = model.DietaryRestrictions;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                return ctx.SaveChanges() > 0;
+            }
+        }
 
-    //    public bool DeleteDiet(int dietId)
-    //    {
-    //        using (var ctx = new ApplicationDbContext())
-    //        {
-    //            var entity =
-    //                ctx
-    //                .DietaryPlan
-    //                .Single(e => e.DietId == dietId && e.OwnerId == _userId);// -->needs AppID created to fix
+        public bool DeleteDiet(int dietId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .DietaryPlan
+                    .Single(e => e.DietId == dietId);// -->needs AppID created to fix
 
                 ctx.DietaryPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
             }
-        }*/
+        }
 
-    //    // HELPER METHOD
-    //    // SEE ALL NOTES FOR SPECIFIC USER
-    //    public IEnumerable<DietListItem> GetDiets()
-    //    {
-    //        using (var ctx = new ApplicationDbContext())
-    //        {
-    //            var query =
-    //                ctx
-    //                    .DietaryPlan
-    //                    .Where(e => e.OwnerId == _userId)// -->needs AppID created to fix
+        // HELPER METHOD
+        // SEE ALL NOTES FOR SPECIFIC USER
+        public IEnumerable<DietListItem> GetDiets()
+        {
+           using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .DietaryPlan
+                        .Where(e => e.DietId == _dietId)// -->needs AppID created to fix
 
-    //                    .Select(
-    //                    e =>
-    //                    new DietListItem
-    //                    {
-    //                        DietId = e.DietId,
-    //                        Name = e.Name,
-    //                        DietDesc = e.DietDesc,
-    //                        CreatedUtc = e.CreatedUtc,
+                        .Select(
+                        e =>
+                        new DietListItem
+                        {
+                            DietId = e.DietId,
+                            Name = e.Name,
+                            DietDesc = e.DietDesc,
+                            CreatedUtc = e.CreatedUtc,
                             
-    //                    }
-    //               );
-    //            return query.ToArray();
-    //        }
-    //    }
+                        }
+                   );
+                return query.ToArray();
+            }
+        }
 
     }
 }

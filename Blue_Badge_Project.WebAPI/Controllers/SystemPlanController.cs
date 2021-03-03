@@ -45,7 +45,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
         private SystemPlanService CreateSystemPlanService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = int.Parse(User.Identity.GetUserId());
             var systemPlanService = new SystemPlanService(userId);
             return systemPlanService;
         }

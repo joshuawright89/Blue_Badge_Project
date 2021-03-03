@@ -10,11 +10,11 @@ namespace Blue_Badge_Project.Services
 {
     public class SystemPlanService
     {
-        private readonly Guid _systemId;
+        private readonly int _systemId;
 
-        public SystemPlanService(Guid systemId)
+        public SystemPlanService(int sysId)
         {
-            _systemId = systemId;
+            _systemId = sysId;
         }
 
         public bool CreateSystemPlan(SystemPlanCreate plan)

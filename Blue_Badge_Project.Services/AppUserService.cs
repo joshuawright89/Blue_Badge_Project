@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.Services
 {
@@ -16,7 +17,6 @@ namespace Blue_Badge_Project.Services
             _userId = userId;
         }
 
-        //CONSTRUCTOR - LAST NAME
         private readonly string _lastName;
         public AppUserService(string lastName)
         {
@@ -35,15 +35,14 @@ namespace Blue_Badge_Project.Services
             var entity =
                 new ApplicationUser()
                 {
-                    UserId = model.UserId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
                     HeightInCentimeters = model.Height,
                     WeightInLbs = model.Weight,
-                    Gender = model.Gender,
-                    BodyType = model.BodyType,
-                    Goal = model.Goal,
+                    Gender = (GenderEnum)model.Gender,
+                    BodyType = (BodyTypeEnum)model.BodyType,
+                    Goal = (GoalEnum)model.Goal,
                     DateJoined = DateTime.Now
                 };
 
@@ -98,7 +97,7 @@ namespace Blue_Badge_Project.Services
         }*/
 
 
-        public IEnumerable<AppUserListItem> GetAppUsersByLastName(string LastName)  //Search by last name
+        public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -110,7 +109,6 @@ namespace Blue_Badge_Project.Services
                         e =>
                         new AppUserListItem
                         {
-                            AppUserId = e.UserId,
                             FirstName = e.FirstName,
                             LastName = e.LastName,
                             Gender = e.Gender
@@ -120,7 +118,7 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-        public AppUserDetail GetAppUserByGuid(int OwnerId)
+        public ApplicationUser GetUserId(int userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -130,7 +128,6 @@ namespace Blue_Badge_Project.Services
                 return
                     new AppUserDetail
                     {
-                        AppUserId = entity.UserId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         Email = entity.Email,
@@ -145,4 +142,5 @@ namespace Blue_Badge_Project.Services
             }
         }
     }
+    
 }

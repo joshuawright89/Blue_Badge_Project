@@ -17,7 +17,7 @@ namespace Blue_Badge_Project.Data
     public class FitnessPlan
     {
         [Key]
-        public int FitnessId { get; set; }
+        public int fitId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

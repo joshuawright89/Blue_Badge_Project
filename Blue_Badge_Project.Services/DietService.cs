@@ -32,7 +32,7 @@ namespace Blue_Badge_Project.Services
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.DietaryPlan.Add(entity);
+                ctx.DietPlan.Add(entity);
                 return ctx.SaveChanges() > 0;
             }
         }
@@ -42,7 +42,7 @@ namespace Blue_Badge_Project.Services
             {
                 var entity =
                     ctx
-                    .DietaryPlan
+                    .DietPlan
                     .Single(e => e.DietId == _dietId);
                 return 
                     new DietDetail
@@ -65,7 +65,7 @@ namespace Blue_Badge_Project.Services
             {
                 var entity =
                     ctx
-                    .DietaryPlan
+                    .DietPlan
                     .Single(e => e.DietId == _dietId);
 
                 entity.Name = model.Name;
@@ -86,10 +86,10 @@ namespace Blue_Badge_Project.Services
             {
                 var entity =
                     ctx
-                    .DietaryPlan
+                    .DietPlan
                     .Single(e => e.DietId == dietId);// -->needs AppID created to fix
 
-                ctx.DietaryPlan.Remove(entity);
+                ctx.DietPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
             }
         }
@@ -102,7 +102,7 @@ namespace Blue_Badge_Project.Services
             {
                 var query =
                     ctx
-                        .DietaryPlan
+                        .DietPlan
                         .Where(e => e.DietId == _dietId)// -->needs AppID created to fix
 
                         .Select(

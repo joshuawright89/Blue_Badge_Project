@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
 {
-    public enum FitRestrictions
+    public enum RestrictionsEnum
     {
         LowImpact = 1,
         Asthma,
@@ -17,11 +17,11 @@ namespace Blue_Badge_Project.Data
     public class FitnessPlan
     {
         [Key]
-        public int fitId { get; set; }
+        public int FitId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
-        public string FitnessDesc { get; set; }
+        public string FitDescription { get; set; }
         [Required]
         public bool WeightLoss { get; set; }
         [Required]
@@ -29,7 +29,7 @@ namespace Blue_Badge_Project.Data
         [Required]
         public bool Endurance { get; set; }
         [Required]
-        public FitRestrictions FitnessRestrictions { get; set; }
+        public RestrictionsEnum Restrictions { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset ModifiedUtc { get; set; }

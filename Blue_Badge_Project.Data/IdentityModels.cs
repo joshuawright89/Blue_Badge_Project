@@ -77,13 +77,8 @@ namespace Blue_Badge_Project.Data
 
 
         public DbSet<DietPlan> DietPlan { get; set; }
-
- 
-        //public DbSet<AppUser> AppUser { get; set; }
-        public DbSet<DietPlan> DietaryPlan { get; set; }
-
         public DbSet<SystemPlan> SystemPlan { get; set; }
-        public DbSet<FitnessPlan> FitPlans { get; set; }
+        public DbSet<FitnessPlan> FitnessPlan { get; set; }
     
 
 

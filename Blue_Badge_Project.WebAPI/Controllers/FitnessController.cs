@@ -14,12 +14,12 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     public class FitnessController : ApiController
     {
 
-        public IHttpActionResult Post(FitnessCreate fitnessPlan)
+        public IHttpActionResult Post(FitnessCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var service = CreateFitnessService();
-            if (!service.CreateFitness(fitnessPlan))
+            if (!service.CreateFitness(model))
                 return InternalServerError();
             return Ok();
 
@@ -31,27 +31,29 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return Ok(fitnessPlans);
        }
             
-       public IHttpActionResult GetId(int fitnessId)
+       public IHttpActionResult GetId(int id)
        {
             FitnessService fitnessService = CreateFitnessService();
-            var fitness = fitnessService.GetFitnessById(fitnessId);
-                return Ok(fitness);
+            var plan = fitnessService.GetFitnessById(id);
+                return Ok(plan);
        }
             
-       public IHttpActionResult UpdateFit(FitnessEdit fitness)
+       public IHttpActionResult Update(FitnessEdit model)
        {
           if (!ModelState.IsValid)
              return BadRequest(ModelState);
 
          var Service = CreateFitnessService();
-            if (!Service.UpdateFitness(fitness))
+            if (!Service.UpdateFitness(model))
                 return InternalServerError();
                 return Ok();
        }
-            
-       public IHttpActionResult fitnessDelete(int fitnessId)
+         
+       
+       public IHttpActionResult DeleteFitness(int fitnessId)
        {
-          int service = CreateFitnessService();
+            var service = CreateFitnessService();
+
             if (!service.DeleteFitness(fitnessId))
                 return InternalServerError();
              return Ok();
@@ -59,8 +61,8 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
        private FitnessService CreateFitnessService()
        {
-          int appId = int.Parse(UserIdentity.GetFitnessById());
-          int fitnessService = new FitnessService(userId);
+          var fitId = int.Parse(User.Identity.GetFitnessId());
+          var fitnessService = new FitnessService(fitId);
               return fitnessService;
 
        }

@@ -23,7 +23,7 @@ namespace Blue_Badge_Project.Services
             _lastName = lastName;
         }
 
-        //CONSTRUCTOR - GENDER
+        
         private readonly GenderEnum _gender;
         public AppUserService(GenderEnum gender)
         {

@@ -28,9 +28,11 @@ namespace Blue_Badge_Project.Models
 
         public int Height { get; set; }
         public int Weight { get; set; }
-        
+       
+
+
         public GenderEnum Gender { get; set; }
-        public enum GenderEnum
+        public enum GenderEnum 
         {
             Female = 1,
             Male
@@ -53,7 +55,7 @@ namespace Blue_Badge_Project.Models
         }
 
 
-        //Do not need to give it these properties: date joined, OwnerId(Guid), or password
+        
 
     }
 }

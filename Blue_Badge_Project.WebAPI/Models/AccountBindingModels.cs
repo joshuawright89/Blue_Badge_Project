@@ -53,7 +53,7 @@ namespace Blue_Badge_Project.WebAPI.Models
 
         
         // AppUserId
-        public int AppUserId { get; set; }
+        public string UserId { get; set; }
         // FirstName
         public string FirstName { get; set; }
         // LastName

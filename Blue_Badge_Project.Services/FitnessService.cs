@@ -12,9 +12,9 @@ namespace Blue_Badge_Project.Services
     {
         private readonly int _fitId;
 
-        public FitnessService(int fitnessId)
+        public FitnessService(int fitId)
         {
-            _fitId = fitnessId;
+            _fitId = fitId;
         }
 
 
@@ -24,36 +24,36 @@ namespace Blue_Badge_Project.Services
                 new FitnessPlan()
                 {
                     Name = model.Name,
-                    FitnessDesc = model.FitnessDesc,
+                    FitDescription = model.FitDescription,
                     WeightLoss = model.WeightLoss,
                     MuscleGain = model.MuscleGain,
                     Endurance = model.Endurance,
-                    FitnessRestrictions = model.FitnessRestrictions,
+                    Restrictions = (RestrictionsEnum) model.Restrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.FitPlans.Add(entity);
+                ctx.FitnessPlan.Add(entity);
                 return ctx.SaveChanges() > 0;
             }
         }
-        public FitnessDetail GetFitnessById(int fitnessId)
+        public FitnessDetail GetFitnessById(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .FitPlans
-                    .Single(e => e.fitId == _fitId);
+                    .FitnessPlan
+                    .Single(e => e.FitId == Id);
                 return
                    new FitnessDetail
                    {
                        Name = entity.Name,
-                       FitnessDesc = entity.FitnessDesc,
+                       FitDescription = entity.FitDescription,
                        WeightLoss = entity.WeightLoss,
                        MuscleGain = entity.MuscleGain,
                        Endurance = entity.Endurance,
-                       FitnessRestrictions = entity.FitnessRestrictions,
+                       Restrictions = entity.Restrictions,
                        CreatedUtc = DateTimeOffset.Now
 
                    };
@@ -65,29 +65,29 @@ namespace Blue_Badge_Project.Services
             {
                 var entity =
                     ctx
-                    .FitPlans
-                    .Single(e => e.fitId == _fitId);
+                    .FitnessPlan
+                    .Single(e => e.FitId == model.FitId);
                     
                 entity.Name = model.Name;
-                entity.FitnessDesc = model.FitnessDesc;
+                entity.FitDescription = model.FitDescription;
                 entity.WeightLoss = model.WeightLoss;
                 entity.MuscleGain = model.MuscleGain;
                 entity.Endurance = model.Endurance;
-                entity.FitnessRestrictions = model.FitnessRestriction;
+                entity.Restrictions = (RestrictionsEnum) model.Restrictions;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
                 return ctx.SaveChanges() > 0;
             }
         }
-        public bool DeleteFitness(int fitnessId)
+        public bool Delete(int fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .FitPlans
-                    .Single(e => e.fitId == _fitId);
+                    .FitnessPlan
+                    .Single(e => e.FitId == _fitId);
 
-                ctx.FitPlans.Remove(entity);
+                ctx.FitnessPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
             }
         }
@@ -97,15 +97,15 @@ namespace Blue_Badge_Project.Services
             {
                 var query =
                     ctx
-                        .FitPlans
-                        .Where(e => e.fitId == _fitId)
+                        .FitnessPlan
+                        .Where(e => e.FitId == _fitId)
                         .Select(
                         e =>
                         new FitnessListItem
                         {
-                            FitnessId = e.fitId,
+                            FitnessId = e.FitId,
                             Name = e.Name,
-                            FitDesc = e.FitnessDesc,
+                            FitDescription = e.FitDescription,
                             CreatedUtc = e.CreatedUtc,
                         }
                         );

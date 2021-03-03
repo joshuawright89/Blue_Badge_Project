@@ -38,7 +38,7 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-
+        
         public SystemPlanDetail GetSysIdById(int id)
         {
             using (var ctx = new ApplicationDbContext())

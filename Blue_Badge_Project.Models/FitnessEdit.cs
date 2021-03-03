@@ -12,11 +12,11 @@ namespace Blue_Badge_Project.Models
     {
         public int FitId { get; set; }
         public string Name { get; set; }
-        public string FitnessDesc { get; set; }
+        public string FitDescription { get; set; }
         public bool WeightLoss { get; set; }
         public bool MuscleGain { get; set; }
         public bool Endurance { get; set; }
-        public FitRestrictions FitnessRestriction { get; set; }
+        public RestrictionsEnum FitnessRestriction { get; set; }
  
     }
 }

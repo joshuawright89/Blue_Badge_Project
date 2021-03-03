@@ -7,21 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
-{
-    class SystemPlan
-    {
-        [Key]
-        public int SystemPlanId { get; set; }
-        //[ForeignKey]
-        public int UserId { get; set; }
-        //[ForeignKey]
-        public int FitnessId { get; set; }
-        //[ForeignKey]
-        public int DietId { get; set; }
-
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string PlanGoal { get; set; }
+{    
     public class SystemPlan
     {
         [Key]
@@ -36,11 +22,11 @@ namespace Blue_Badge_Project.Data
         // public virtual AppUser AppUser{ get; set; }
 
         [ForeignKey(nameof(FitnessPlan))]
-        public Guid FitnessId { get; set; }
+        public int FitnessId { get; set; }
         public virtual FitnessPlan FitnessPlan { get; set; }
 
         [ForeignKey(nameof(DietPlan))]
-        public Guid DietId { get; set; }
+        public int DietId { get; set; }
 
         public virtual DietPlan DietPlan{ get; set; }
 

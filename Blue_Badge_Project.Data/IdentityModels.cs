@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 namespace Blue_Badge_Project.Data
 {
     public class ApplicationUser : IdentityUser
-    {
+    {        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
@@ -43,7 +43,6 @@ namespace Blue_Badge_Project.Data
         public BodyTypeEnum BodyType { get; set; }
 
     }
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

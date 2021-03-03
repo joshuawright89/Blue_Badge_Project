@@ -84,6 +84,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppUserCreate.cs" />
+    <Compile Include="AppUserDetail.cs" />
+    <Compile Include="AppUserListItem.cs" />
     <Compile Include="FitnessEdit.cs" />
     <Compile Include="FitnessDetail.cs" />
     <Compile Include="FitnessListItem.cs" />

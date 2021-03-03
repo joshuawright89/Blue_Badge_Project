@@ -8,51 +8,51 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Services
 {
-    public class DietService
+    class DietService
     {
-    //    public bool CreateDiet(DietCreate model)
-    //    {
-    //        var entity =
-    //            new DietPlan()
-    //            {
-    //                Name = model.Name,
-    //                DietDesc = model.DietDesc,
-    //                BalancedDiet = model.BalancedDiet,
-    //                Protein = model.Protein,
-    //                Vegatarian = model.Vegatarian,
-    //                Carbo = model.Carbo,
-    //                DietaryRestrictions = model.DietaryRestrictions,
-    //                CreatedUtc = DateTimeOffset.Now
-    //            };
-    //        using (var ctx = new ApplicationDbContext())
-    //        {
-    //            ctx.DietaryPlan.Add(entity);
-    //            return ctx.SaveChanges() > 0;
-    //        }
-    //    }
-    //    public DietDetail GetDietById(int DietId)
-    //    {
-    //        using (var ctx = new ApplicationDbContext())
-    //        {
-    //            var entity =
-    //                ctx
-    //                .DietaryPlan
-    //                .Single(e => e.DietId == DietId && e.OwnerId == _userId); // ---> needs AppID created to fix
-    //            return
-    //                new DietDetail
-    //                {
-    //                    Name = entity.Name,
-    //                    DietDesc = entity.DietDesc,
-    //                    BalancedDiet = entity.BalancedDiet,
-    //                    Protein = entity.Protein,
-    //                    Vegatarian = entity.Vegatarian,
-    //                    Carbo = entity.Carbo,
-    //                    DietaryRestrictions = entity.DietaryRestrictions,
-    //                    CreatedUtc = DateTimeOffset.Now
-    //                };
-    //        }
-    //    }
-
+        public bool CreateDiet(DietCreate model)
+        {
+            var entity =
+                new DietPlan()
+                {
+                    Name = model.Name,
+                    DietDesc = model.DietDesc,
+                    BalancedDiet = model.BalancedDiet,
+                    Protein = model.Protein,
+                    Vegatarian = model.Vegatarian,
+                    Carbo = model.Carbo,
+                    DietaryRestrictions = model.DietaryRestrictions,
+                    CreatedUtc = DateTimeOffset.Now
+                };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.DietaryPlan.Add(entity);
+                return ctx.SaveChanges() > 0;
+            }
+        }
+        /*public DietDetail GetDietById(int DietId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .DietaryPlan
+                    .Single(e => e.DietId == DietId && e.OwnerId == _userId); // ---> needs AppID created to fix
+                return
+                    new DietDetail
+                    {
+                        Name = entity.Name,
+                        DietDesc = entity.DietDesc,
+                        BalancedDiet = entity.BalancedDiet,
+                        Protein = entity.Protein,
+                        Vegatarian = entity.Vegatarian,
+                        Carbo = entity.Carbo,
+                        DietaryRestrictions = entity.DietaryRestrictions,
+                        CreatedUtc = DateTimeOffset.Now
+                    };
+            }
+        }
+   
     //    public bool UpdateDiet(DietEdit model)
     //    {
     //        using (var ctx = new ApplicationDbContext())
@@ -83,10 +83,10 @@ namespace Blue_Badge_Project.Services
     //                .DietaryPlan
     //                .Single(e => e.DietId == dietId && e.OwnerId == _userId);// -->needs AppID created to fix
 
-    //            ctx.DietaryPlan.Remove(entity);
-    //            return ctx.SaveChanges() > 0;
-    //        }
-    //    }
+                ctx.DietaryPlan.Remove(entity);
+                return ctx.SaveChanges() > 0;
+            }
+        }*/
 
     //    // HELPER METHOD
     //    // SEE ALL NOTES FOR SPECIFIC USER

@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppUserService.cs" />
     <Compile Include="FitnessService.cs" />
     <Compile Include="DietService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

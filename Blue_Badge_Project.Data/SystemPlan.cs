@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -26,11 +26,11 @@ namespace Blue_Badge_Project.Data
         public virtual ApplicationUser ApplicationUser{ get; set; }
 
         [ForeignKey(nameof(FitnessPlan))]
-        public Guid FitnessId { get; set; }
+        public int FitnessId { get; set; }
         public virtual FitnessPlan FitnessPlan { get; set; }
 
         [ForeignKey(nameof(DietPlan))]
-        public Guid DietId { get; set; }
+        public int DietId { get; set; }
 
         public virtual DietPlan DietPlan{ get; set; }
 

@@ -322,14 +322,14 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)  //POST method
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, UserId = model.AppUserId, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, HeightInCentimeters = model.HeightInCentimeters, WeightInLbs = model.WeightInLbs, Gender = model.Gender, Goal = model.Goal, BodyType = model.BodyType };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -340,6 +340,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
             return Ok();
         }
+        
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]

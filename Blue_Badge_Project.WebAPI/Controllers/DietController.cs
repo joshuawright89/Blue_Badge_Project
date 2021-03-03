@@ -12,15 +12,16 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class DietController : ApiController
     {
-    //    public IHttpActionResult Post(DietCreate diet)
-    //    {
-    //        if (!ModelState.IsValid)
-    //            return BadRequest(ModelState);
-    //        var service = CreateDietService();
-    //        if (!service.CreateDiet(diet))
-    //            return InternalServerError();
-    //        return Ok();
-    //    }
+        /*public IHttpActionResult Post(DietCreate diet)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateDietService();
+            if (!service.CreateDiet(diet))
+                return InternalServerError();
+            return Ok();
+        }
+
 
     //    public IHttpActionResult Get()
     //    {
@@ -53,13 +54,12 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     //        return Ok();
     //    }
 
-
-    //    //Need app user table done 
-    //    private DietService CreateDietService()
-    //    {
-    //        var appId = Guid.Parse(User.Identity.GetDietById());
-    //        var dietService = new DietService(userId);
-    //        return dietService;
-    //    }
+        //Need app user table done 
+        private DietService CreateDietService()
+        {
+            var appId = Guid.Parse(User.Identity.GetDietById());
+            var dietService = new DietService(userId);
+            return dietService;
+        }*/
     }
 }

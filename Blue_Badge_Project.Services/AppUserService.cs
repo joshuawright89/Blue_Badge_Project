@@ -96,7 +96,6 @@ namespace Blue_Badge_Project.Services
             }
         }*/
 
-
         public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
         {
             using (var ctx = new ApplicationDbContext())
@@ -122,6 +121,8 @@ namespace Blue_Badge_Project.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+
+                
                 var entity =
                     ctx
                     .Users.Single(e => e.LastName == _lastName && e.UserId == _userId);

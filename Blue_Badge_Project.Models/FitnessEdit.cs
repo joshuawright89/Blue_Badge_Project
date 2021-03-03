@@ -16,7 +16,7 @@ namespace Blue_Badge_Project.Models
         public bool WeightLoss { get; set; }
         public bool MuscleGain { get; set; }
         public bool Endurance { get; set; }
-        public RestrictionsEnum FitnessRestriction { get; set; }
+        public RestrictionsEnum Restrictions { get; set; }
  
     }
 }

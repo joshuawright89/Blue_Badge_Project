@@ -35,6 +35,6 @@ namespace Blue_Badge_Project.Data
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public DietRestrictions DietaryRestrictions { get; set; }
+        public DietRestrictions DietRestrictions { get; set; }
     }
 }

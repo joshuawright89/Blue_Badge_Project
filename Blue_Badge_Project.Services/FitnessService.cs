@@ -28,7 +28,7 @@ namespace Blue_Badge_Project.Services
                     WeightLoss = model.WeightLoss,
                     MuscleGain = model.MuscleGain,
                     Endurance = model.Endurance,
-                    Restrictions = (RestrictionsEnum) model.Restrictions,
+                    Restrictions = model.Restrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
@@ -78,7 +78,7 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
-        public bool Delete(int fitId)
+        public bool DeleteFitness(int fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {

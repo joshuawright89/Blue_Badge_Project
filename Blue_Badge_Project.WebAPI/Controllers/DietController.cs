@@ -57,7 +57,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
       //Need app user table done 
       private DietService CreateDietService()
       {
-          int dietId = int.Parse(User.Identity.GetDietById());
+          var dietId = int.Parse(User.Identity.GetDietById());
           var dietService = new DietService(dietId);
           return dietService;
       }

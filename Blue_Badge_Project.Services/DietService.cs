@@ -27,7 +27,7 @@ namespace Blue_Badge_Project.Services
                     Protein = model.Protein,
                     Vegatarian = model.Vegatarian,
                     Carbo = model.Carbo,
-                    DietaryRestrictions = model.DietaryRestrictions,
+                    DietRestrictions = model.DietRestrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
@@ -53,7 +53,7 @@ namespace Blue_Badge_Project.Services
                         Protein = entity.Protein,
                         Vegatarian = entity.Vegatarian,
                         Carbo = entity.Carbo,
-                        DietaryRestrictions = entity.DietaryRestrictions,
+                        DietRestrictions = entity.DietRestrictions,
                         CreatedUtc = DateTimeOffset.Now
                     };
             }
@@ -74,7 +74,7 @@ namespace Blue_Badge_Project.Services
                 entity.Protein = model.Protein;
                 entity.Vegatarian = model.Vegatarian;
                 entity.Carbo = model.Carbo;
-                entity.DietaryRestrictions = model.DietaryRestrictions;
+                entity.DietRestrictions = model.DietRestrictions;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
                 return ctx.SaveChanges() > 0;
             }
@@ -87,7 +87,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == dietId);// -->needs AppID created to fix
+                    .Single(e => e.DietId == dietId);
 
                 ctx.DietPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
@@ -103,7 +103,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .DietPlan
-                        .Where(e => e.DietId == _dietId)// -->needs AppID created to fix
+                        .Where(e => e.DietId == _dietId)
 
                         .Select(
                         e =>

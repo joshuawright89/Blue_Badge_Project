@@ -50,11 +50,11 @@ namespace Blue_Badge_Project.WebAPI.Controllers
        }
          
        
-       public IHttpActionResult DeleteFitness(int fitnessId)
+       public IHttpActionResult Delete(int fitId)
        {
             var service = CreateFitnessService();
 
-            if (!service.DeleteFitness(fitnessId))
+            if (!service.DeleteFitness(fitId))
                 return InternalServerError();
              return Ok();
        }

@@ -9,7 +9,7 @@ using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.Services
 {
-    public class AppUserService  //"The service layer is how our application interacts with the database. In this section, we will create the NoteService that will push and pull notes from the database"
+    public class AppUserService  
     {
         private readonly string _userId;
         public AppUserService(string userId)
@@ -25,7 +25,7 @@ namespace Blue_Badge_Project.Services
 
         
 
-        public bool CreateAppUser(AppUserCreate model) //4.02  THIS LIKELY WILL MOVE ELSEWHERE! "This will create an instance of [ApplicationUser]."
+        public bool CreateAppUser(AppUserCreate model) 
         {
             var entity =
                 new ApplicationUser()
@@ -112,7 +112,7 @@ namespace Blue_Badge_Project.Services
             }
         }*/
 
-        /*public ApplicationUser GetUserId(string userId)
+        public AppUserDetail GetUserId(string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -137,7 +137,7 @@ namespace Blue_Badge_Project.Services
                         BodyType = entity.BodyType
                     };
             }
-        }*/
+        }
     }
     
 }

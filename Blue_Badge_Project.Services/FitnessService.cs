@@ -34,7 +34,7 @@ namespace Blue_Badge_Project.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.FitnessPlan.Add(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
         public FitnessDetail GetFitnessById(int Id)
@@ -75,10 +75,10 @@ namespace Blue_Badge_Project.Services
                 entity.Endurance = model.Endurance;
                 entity.Restrictions = (RestrictionsEnum) model.Restrictions;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteFitness(int fitId)
+        public bool DeleteFitness(int _fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {

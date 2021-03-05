@@ -13,14 +13,39 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class AppUserController : ApiController
     {
+        [HttpPost]
+        public IHttpActionResult PostAppUserCreate(AppUserCreate appUserCreate)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var appUserService = CreateAppUserService();
+
+            if (!appUserService.CreateAppUser(appUserCreate))
+                return InternalServerError();
+            return Ok();
+        }
+        [HttpGet]
+        public IHttpActionResult GetAllAppUsers()
+        {
+            AppUserService appUserService = CreateAppUserService();
+            var users = appUserService.GetAllUsers();
+            return Ok(users);
+        }
         [HttpGet]
         public IHttpActionResult GetAppUserDetail(string userId)
         {
-            AppUserService appUserService = CreateAppUserDetail();
+            AppUserService appUserService = CreateAppUserService();
             var appUserDetail = appUserService.GetUserId(userId);
             return Ok(appUserDetail);
         }
-        private AppUserService CreateAppUserDetail()
+        public IHttpActionResult UserByLastName(string lastName)
+        {
+            AppUserService appUserService = CreateAppUserService();
+            var userLastName = appUserService.GetAppUsersByLastName(lastName);
+            return Ok(userLastName);
+        }
+        private AppUserService CreateAppUserService()
         {
             var userId = int.Parse(User.Identity.GetUserId());
             var appUserDetail = new AppUserService(userId.ToString());

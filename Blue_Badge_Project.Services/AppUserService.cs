@@ -9,22 +9,18 @@ using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.Services
 {
-    public class AppUserService  
+    public class AppUserService
     {
+  
+        
         private readonly string _userId;
         public AppUserService(string userId)
         {
             _userId = userId;
+            
         }
 
-        /*private readonly string _lastName;
-        public AppUserService(string lastName)
-        {
-            _lastName = lastName;
-        }*/
-
-        
-
+   
         public bool CreateAppUser(AppUserCreate model) 
         {
             var entity =
@@ -45,6 +41,30 @@ namespace Blue_Badge_Project.Services
             {
                 ctx.Users.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+        public IEnumerable<AppUserListItem> GetAllUsers()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Users
+                    .Where(e => e.UserId == _userId)
+                    .Select(
+                        e =>
+                            new AppUserListItem
+                            {
+                                UserId = e.UserId,
+                                FirstName = e.FirstName,
+                                LastName = e.LastName,
+                                //Age = e.Age,
+                                DateJoined = e.DateJoined,
+                                Gender = e.Gender,
+                                Goal = e.Goal
+                            }
+                        );
+                return query.ToArray();
             }
         }
 
@@ -91,14 +111,14 @@ namespace Blue_Badge_Project.Services
             }
         }*/
 
-       /* public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
+        public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Users
-                    .Where(e => e.LastName == _lastName)
+                    .Where(e => e.LastName == lastName)
                     .Select(
                         e =>
                         new AppUserListItem
@@ -110,7 +130,7 @@ namespace Blue_Badge_Project.Services
                         );
                 return query.ToArray();
             }
-        }*/
+        }
 
         public AppUserDetail GetUserId(string userId)
         {

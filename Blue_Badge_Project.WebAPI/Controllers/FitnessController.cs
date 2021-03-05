@@ -8,13 +8,17 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
+using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
+using HttpGetAttribute = System.Web.Mvc.HttpGetAttribute;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
+using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
 namespace Blue_Badge_Project.WebAPI.Controllers
 {
     
     public class FitnessController : ApiController
     {
-
+        [HttpPost]
         public IHttpActionResult Post(FitnessCreate model)
         {
             if (!ModelState.IsValid)
@@ -33,13 +37,14 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             return fitnessService;
 
         }
-
+        [HttpGet]
         public IHttpActionResult GetAll()
        {
             FitnessService fitnessService = CreateFitnessService();
             var fitnessPlans = fitnessService.GetFitness();
                 return Ok(fitnessPlans);
        }
+        [HttpGet]
             
        public IHttpActionResult GetId(int id)
        {
@@ -47,7 +52,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             var plan = fitnessService.GetFitnessById(id);
                 return Ok(plan);
        }
-            
+        [HttpPut]
        public IHttpActionResult Update(FitnessEdit model)
        {
           if (!ModelState.IsValid)
@@ -58,6 +63,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return InternalServerError();
                 return Ok();
        }
+        [HttpDelete]
          
        public IHttpActionResult Delete(int fitId)
        {

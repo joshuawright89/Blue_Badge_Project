@@ -1,5 +1,6 @@
 ﻿using Blue_Badge_Project.Models;
 using Blue_Badge_Project.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,17 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
 
-        }  
-       public IHttpActionResult GetAll()
+        }
+
+        private FitnessService CreateFitnessService()
+        {
+            var userId = int.Parse(User.Identity.GetUserId());
+            var fitnessService = new FitnessService(userId);
+            return fitnessService;
+
+        }
+
+        public IHttpActionResult GetAll()
        {
             FitnessService fitnessService = CreateFitnessService();
             var fitnessPlans = fitnessService.GetFitness();
@@ -49,7 +59,6 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return Ok();
        }
          
-       
        public IHttpActionResult Delete(int fitId)
        {
             var service = CreateFitnessService();
@@ -58,15 +67,5 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return InternalServerError();
              return Ok();
        }
-
-       private FitnessService CreateFitnessService()
-       {
-          var fitId = int.Parse(User.Identity.GetFitnessId());
-          var fitnessService = new FitnessService(fitId);
-              return fitnessService;
-
-       }
-        
-
     }
 }

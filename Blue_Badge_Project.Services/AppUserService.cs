@@ -11,24 +11,19 @@ namespace Blue_Badge_Project.Services
 {
     public class AppUserService  //"The service layer is how our application interacts with the database. In this section, we will create the NoteService that will push and pull notes from the database"
     {
-        private readonly int _userId;
-        public AppUserService(int userId)
+        private readonly string _userId;
+        public AppUserService(string userId)
         {
             _userId = userId;
         }
 
-        private readonly string _lastName;
+        /*private readonly string _lastName;
         public AppUserService(string lastName)
         {
             _lastName = lastName;
-        }
+        }*/
 
         
-        private readonly GenderEnum _gender;
-        public AppUserService(GenderEnum gender)
-        {
-            _gender = gender;
-        }
 
         public bool CreateAppUser(AppUserCreate model) //4.02  THIS LIKELY WILL MOVE ELSEWHERE! "This will create an instance of [ApplicationUser]."
         {
@@ -40,9 +35,9 @@ namespace Blue_Badge_Project.Services
                     Email = model.Email,
                     HeightInCentimeters = model.Height,
                     WeightInLbs = model.Weight,
-                    Gender = (GenderEnum)model.Gender,
-                    BodyType = (BodyTypeEnum)model.BodyType,
-                    Goal = (GoalEnum)model.Goal,
+                    Gender = (Data.GenderEnum)model.Gender,
+                    BodyType = (Data.BodyTypeEnum)model.BodyType,
+                    Goal = (Data.GoalEnum)model.Goal,
                     DateJoined = DateTime.Now
                 };
 
@@ -96,7 +91,7 @@ namespace Blue_Badge_Project.Services
             }
         }*/
 
-        public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
+       /* public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -115,9 +110,9 @@ namespace Blue_Badge_Project.Services
                         );
                 return query.ToArray();
             }
-        }
+        }*/
 
-        public ApplicationUser GetUserId(int userId)
+        /*public ApplicationUser GetUserId(string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -125,10 +120,11 @@ namespace Blue_Badge_Project.Services
                 
                 var entity =
                     ctx
-                    .Users.Single(e => e.LastName == _lastName && e.UserId == _userId);
+                    .Users.Single(e => e.UserId == userId);
                 return
                     new AppUserDetail
                     {
+                        UserId = entity.UserId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         Email = entity.Email,
@@ -141,7 +137,7 @@ namespace Blue_Badge_Project.Services
                         BodyType = entity.BodyType
                     };
             }
-        }
+        }*/
     }
     
 }

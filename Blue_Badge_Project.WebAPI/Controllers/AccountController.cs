@@ -329,7 +329,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, UserId = model.UserId, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, HeightInCentimeters = model.HeightInCentimeters, WeightInLbs = model.WeightInLbs, Gender = model.Gender, Goal = model.Goal, BodyType = model.BodyType };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, HeightInCentimeters = model.HeightInCentimeters, WeightInLbs = model.WeightInLbs, Gender = model.Gender, Goal = model.Goal, BodyType = model.BodyType };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

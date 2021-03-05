@@ -11,8 +11,9 @@ namespace Blue_Badge_Project.Models
 {
     public class AppUserDetail
     {
-        public int AppUserId { get; set; }
-        public Guid OwnerId { get; set; }
+        public string UserId { get; set; }
+
+        //public Guid OwnerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

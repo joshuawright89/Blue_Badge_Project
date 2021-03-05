@@ -11,6 +11,27 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace Blue_Badge_Project.Data
 {
+
+    public enum GenderEnum
+    {
+        Female = 1,
+        Male
+    }
+
+    public enum GoalEnum
+    {
+        GainMass = 1,
+        LeanDown,
+        ToneMuscle
+    }
+
+    public enum BodyTypeEnum
+    {
+        Ectomorph = 1,
+        Mesomorph,
+        Endomorph
+    }
+
     public class ApplicationUser : IdentityUser
     {        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -20,28 +41,7 @@ namespace Blue_Badge_Project.Data
             return userIdentity;
         }
 
-        public enum GenderEnum
-        {
-            Female = 1,
-            Male
-        }
-
-        public enum GoalEnum
-        {
-            GainMass = 1,
-            LeanDown,
-            ToneMuscle
-        }
-
-        public enum BodyTypeEnum
-        {
-            Ectomorph = 1,
-            Mesomorph,
-            Endomorph
-        }
-
-        
-        
+        public string UserId { get; set; }
         public string FirstName { get; set; }
        
         public string LastName { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Blue_Badge_Project.Models;
 using Blue_Badge_Project.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,23 +17,30 @@ namespace Blue_Badge_Project.WebAPI.Controllers
       {
           if (!ModelState.IsValid)
               return BadRequest(ModelState);
-          var service = CreateDietService();
+          var service = DisplayDietService();
           if (!service.CreateDiet(diet))
               return InternalServerError();
           return Ok();
       }
 
+        //Need app user table done 
+        private DietService DisplayDietService()
+        {
+            var userId = int.Parse(User.Identity.GetUserId());
+            var dietService = new DietService(userId);
+            return dietService;
+        }
 
-      public IHttpActionResult Get()
+        public IHttpActionResult GetAll()
       {
-          DietService dietService = CreateDietService();
+          DietService dietService = DisplayDietService();
           var diets = dietService.GetDiets();
           return Ok(diets);
       }
 
       public IHttpActionResult Get(int dietId)
       {
-          DietService dietService = CreateDietService();
+          DietService dietService = DisplayDietService();
           var diet = dietService.GetDietById(dietId);
           return Ok(diet);
       }
@@ -40,7 +48,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
       {
           if (!ModelState.IsValid)
               return BadRequest(ModelState);
-          var service = CreateDietService();
+          var service = DisplayDietService();
           if (!service.UpdateDiet(diet))
               return InternalServerError();
           return Ok();
@@ -48,18 +56,12 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
       public IHttpActionResult Delete(int dietId)
       {
-          var service = CreateDietService();
+          var service = DisplayDietService();
           if (!service.DeleteDiet(dietId))
              return InternalServerError();
           return Ok();
       }
 
-      //Need app user table done 
-      private DietService CreateDietService()
-      {
-          var dietId = int.Parse(User.Identity.GetDietById());
-          var dietService = new DietService(dietId);
-          return dietService;
-      }
+
   }
 }

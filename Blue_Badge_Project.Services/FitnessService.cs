@@ -103,7 +103,7 @@ namespace Blue_Badge_Project.Services
                         e =>
                         new FitnessListItem
                         {
-                            FitnessId = e.FitId,
+                            FitId = e.FitId,
                             Name = e.Name,
                             FitDescription = e.FitDescription,
                             CreatedUtc = e.CreatedUtc,

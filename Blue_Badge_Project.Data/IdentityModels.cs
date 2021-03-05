@@ -11,6 +11,27 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace Blue_Badge_Project.Data
 {
+
+    public enum GenderEnum
+    {
+        Female = 1,
+        Male
+    }
+
+    public enum GoalEnum
+    {
+        GainMass = 1,
+        LeanDown,
+        ToneMuscle
+    }
+
+    public enum BodyTypeEnum
+    {
+        Ectomorph = 1,
+        Mesomorph,
+        Endomorph
+    }
+
     public class ApplicationUser : IdentityUser
     {        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -20,13 +41,11 @@ namespace Blue_Badge_Project.Data
             return userIdentity;
         }
 
-        [Key]
-        public int UserId { get; set; }
-        [Required]
+        public string UserId { get; set; }
         public string FirstName { get; set; }
-        [Required]
+       
         public string LastName { get; set; }
-        [Required]
+       
         public string Password { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
@@ -43,6 +62,7 @@ namespace Blue_Badge_Project.Data
         public BodyTypeEnum BodyType { get; set; }
 
     }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -55,11 +75,10 @@ namespace Blue_Badge_Project.Data
             return new ApplicationDbContext();
         }
 
- 
-        //public DbSet<AppUser> AppUser { get; set; }
-        public DbSet<DietPlan> DietaryPlan { get; set; }
+
+        public DbSet<DietPlan> DietPlan { get; set; }
         public DbSet<SystemPlan> SystemPlan { get; set; }
-        public DbSet<FitnessPlan> FitPlans { get; set; }
+        public DbSet<FitnessPlan> FitnessPlan { get; set; }
     
 
 

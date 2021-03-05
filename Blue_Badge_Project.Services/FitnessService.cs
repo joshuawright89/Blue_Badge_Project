@@ -8,101 +8,109 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Services
 {
-    public class FitnessService
+    public class FitnessService 
     {
+        private readonly int _fitId;
+
+        public FitnessService(int fitId)
+        {
+            _fitId = fitId;
+        }
+
+
         public bool CreateFitness(FitnessCreate model)
         {
             var entity =
                 new FitnessPlan()
                 {
                     Name = model.Name,
-                    FitnessDesc = model.FitnessDesc,
+                    FitDescription = model.FitDescription,
                     WeightLoss = model.WeightLoss,
                     MuscleGain = model.MuscleGain,
                     Endurance = model.Endurance,
-                    FitnessRestrictions = model.FitnessRestrictions,
+                    Restrictions = model.Restrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.FitPlans.Add(entity);
+                ctx.FitnessPlan.Add(entity);
                 return ctx.SaveChanges() > 0;
             }
         }
-        /*public FitnessDetail GetFitnessById(int FitnessId)
+        public FitnessDetail GetFitnessById(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .FitPlans
-                    .Single(e => e.FitnessId && e.OwnerId == _userId);
+                    .FitnessPlan
+                    .Single(e => e.FitId == Id);
                 return
                    new FitnessDetail
                    {
                        Name = entity.Name,
-                       FitnessDesc = entity.FitnessDesc,
+                       FitDescription = entity.FitDescription,
                        WeightLoss = entity.WeightLoss,
                        MuscleGain = entity.MuscleGain,
                        Endurance = entity.Endurance,
-                       FitnessRestrictions = entity.FitnessRestrictions,
+                       Restrictions = entity.Restrictions,
                        CreatedUtc = DateTimeOffset.Now
 
                    };
             }
-        }*/
-        /*public bool UpdateFitness(FitnessEdit model)
+        }
+        public bool UpdateFitness(FitnessEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .FitPlans
-                    .Single(e => e.FitnessId == model.FitnessId && e.OwnerId == _userId);
+                    .FitnessPlan
+                    .Single(e => e.FitId == model.FitId);
                     
-        //        entity.Name = model.Name;
-        //        entity.FitDesc = model.FitnessDesc;
-        //        entity.WeightLoss = model.FitnessDesc;
-        //        entity.MuscleGain = model.MuscleGain;
-        //        entity.Endurance = model.Endurance;
-        //        entity.FitnessRestrictions = model.FitnessRestriction;
-        //        entity.ModifiedUtc = DateTimeOffset.UtcNow;
-        //        return ctx.SaveChanges() > 0;
-        //    }
-        //}
-        //public bool DeleteFitness(int fitnessId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //            .FitPlans
-        //            .Single(e => e.FitnessId == fitnessId && e.OwnerId == _userId);
+                entity.Name = model.Name;
+                entity.FitDescription = model.FitDescription;
+                entity.WeightLoss = model.WeightLoss;
+                entity.MuscleGain = model.MuscleGain;
+                entity.Endurance = model.Endurance;
+                entity.Restrictions = (RestrictionsEnum) model.Restrictions;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                return ctx.SaveChanges() > 0;
+            }
+        }
+        public bool DeleteFitness(int fitId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .FitnessPlan
+                    .Single(e => e.FitId == _fitId);
 
-        //        ctx.FitPlans.Remove(entity);
-        //        return ctx.SaveChanges() > 0;
-        //    }
-        //}
-        //public IEnumerable<FitnessListItem> GetFitness()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //                .FitPlans
-        //                .Where(e => e.OwnerId == _userId)
+                ctx.FitnessPlan.Remove(entity);
+                return ctx.SaveChanges() > 0;
+            }
+        }
+        public IEnumerable<FitnessListItem> GetFitness()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .FitnessPlan
+                        .Where(e => e.FitId == _fitId)
                         .Select(
                         e =>
                         new FitnessListItem
                         {
-                            FitnessId = e.FitnessId,
+                            FitId = e.FitId,
                             Name = e.Name,
-                            FitDesc = e.FitDesc,
+                            FitDescription = e.FitDescription,
                             CreatedUtc = e.CreatedUtc,
                         }
                         );
                 return query.ToArray();
             }
-        }*/
+        }
     }
 }

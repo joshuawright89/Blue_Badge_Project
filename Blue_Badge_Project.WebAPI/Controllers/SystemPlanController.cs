@@ -23,14 +23,14 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post(SystemPlanCreate plan)
+        public IHttpActionResult Post(SystemPlanCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateSystemPlanService();
 
-            if (!service.CreateSystemPlan(plan))
+            if (!service.CreateSystemPlan(model))
                 return InternalServerError();
             return Ok();
         }
@@ -45,20 +45,20 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
         private SystemPlanService CreateSystemPlanService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = int.Parse(User.Identity.GetUserId());
             var systemPlanService = new SystemPlanService(userId);
             return systemPlanService;
         }
 
         [HttpPut]
-        public IHttpActionResult UpdatePlan(SystemPlanEdit plan)
+        public IHttpActionResult UpdatePlan(SystemPlanEdit model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateSystemPlanService();
 
-            if (!service.UpdatePlan(plan))
+            if (!service.UpdatePlan(model))
                 return InternalServerError();
             return Ok();
         }

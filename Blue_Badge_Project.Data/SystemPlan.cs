@@ -7,19 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
-{    
+{
+    /*public enum PlanGoal
+    {
+        LooseWeight = 1,
+        GainMuscleMass,
+        BecomeHealthly,
+        NoRestrictions
+    }*/
+
+    
     public class SystemPlan
     {
         [Key]
         public int SysId { get; set; }
 
-        //[Required]
-        //public string Name { get; set; } //Not is the ProjectWireFrame
+        [ForeignKey(nameof(UserId))]
+         public string UserId { get; set; }
 
-        //[ForeignKey(nameof(UseId))]
-        // public Guid UserId { get; set; }
-
-        // public virtual AppUser AppUser{ get; set; }
+        public virtual ApplicationUser ApplicationUser{ get; set; }
 
         [ForeignKey(nameof(FitnessPlan))]
         public int FitnessId { get; set; }
@@ -37,9 +43,6 @@ namespace Blue_Badge_Project.Data
         [Required, Range(85, 400)]
         public double StartingWeight { get; set; }
 
-        [Required]
-        [MaxLength(200, ErrorMessage = "There are too many characters in this field.")]
-        public string SystemPlanGoal { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,13 @@ namespace Blue_Badge_Project.Data
     {
         [Key]
         public int DietId { get; set; }
+
+        [ForeignKey(nameof(UserId))]
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+
         [Required]
         public string Name { get; set; }
         [Required]
@@ -35,6 +43,6 @@ namespace Blue_Badge_Project.Data
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public DietRestrictions DietaryRestrictions { get; set; }
+        public DietRestrictions DietRestrictions { get; set; }
     }
 }

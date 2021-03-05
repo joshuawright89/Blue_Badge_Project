@@ -20,7 +20,7 @@ namespace Blue_Badge_Project.Models
         public bool Vegatarian { get; set; }
 
         public bool Carbo { get; set; }
-        public DietRestrictions DietaryRestrictions { get; set; }
+        public DietRestrictions DietRestrictions { get; set; }
 
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }

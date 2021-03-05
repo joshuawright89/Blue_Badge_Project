@@ -11,39 +11,20 @@ using System.Web.Http;
 namespace Blue_Badge_Project.WebAPI.Controllers
 {
     [Authorize]
-    public class AppUserController : ApiController //"Inside the controller, we're going to add a method that creates [an AppUserService]."  ...  "This will allow us to use our [AppUserService] in our methods."
+    public class AppUserController : ApiController
     {
-        /*private AppUserService CreateAppUserService()
+        [HttpGet]
+        public IHttpActionResult GetAppUserDetail(string userId)
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var appUserService = new AppUserService(userId);
-            return appUserService;
-        }*/
-
-        /*public IHttpActionResult Get() //"Now let's add a Get All method" 4.03
+            AppUserService appUserService = CreateAppUserDetail();
+            var appUserDetail = appUserService.GetUserId(userId);
+            return Ok(appUserDetail);
+        }
+        private AppUserService CreateAppUserDetail()
         {
-            AppUserService appUserService = CreateAppUserService();
-            var appUsers = appUserService.GetAppUsersBySystemPlan();
-            return Ok(appUsers);
-        }*/
-
-        /*public IHttpActionResult Post(AppUserCreate appUser) //4.03
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var service = CreateAppUserService();
-
-            if (!service.CreateAppUser(appUser))
-            {
-                return InternalServerError();
-            }
-            return Ok();
-        }*/
+            var userId = int.Parse(User.Identity.GetUserId());
+            var appUserDetail = new AppUserService(userId.ToString());
+            return appUserDetail;
+        }
     }
-
-
 }
-

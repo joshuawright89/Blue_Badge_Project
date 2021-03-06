@@ -90,10 +90,6 @@
     <Compile Include="FitnessPlan.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="DietPlan.cs" />
-    <Compile Include="Migrations\202103052354172_renewed.cs" />
-    <Compile Include="Migrations\202103052354172_renewed.designer.cs">
-      <DependentUpon>202103052354172_renewed.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SystemPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,9 +99,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103052354172_renewed.resx">
-      <DependentUpon>202103052354172_renewed.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

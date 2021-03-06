@@ -50,15 +50,14 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                     .Users
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.Id == _userId)
                     .Select(
                         e =>
                             new AppUserListItem
                             {
-                                UserId = e.UserId,
+                                UserId = e.Id,
                                 FirstName = e.FirstName,
                                 LastName = e.LastName,
-                                //Age = e.Age,
                                 DateJoined = e.DateJoined,
                                 Gender = e.Gender,
                                 Goal = e.Goal
@@ -140,11 +139,11 @@ namespace Blue_Badge_Project.Services
                 
                 var entity =
                     ctx
-                    .Users.Single(e => e.UserId == userId);
+                    .Users.Single(e => e.Id == userId);
                 return
                     new AppUserDetail
                     {
-                        UserId = entity.UserId,
+                        UserId = entity.Id,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         Email = entity.Email,

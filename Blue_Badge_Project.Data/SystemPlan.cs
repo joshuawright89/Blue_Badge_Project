@@ -22,14 +22,15 @@ namespace Blue_Badge_Project.Data
         [Key]
         public int SysId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
-         public string UserId { get; set; }
-
+        [ForeignKey(nameof(ApplicationUser))]
+        public string UserId { get; set; }
         public virtual ApplicationUser ApplicationUser{ get; set; }
 
+
         [ForeignKey(nameof(FitnessPlan))]
-        public int FitnessId { get; set; }
+        public int FitId { get; set; }
         public virtual FitnessPlan FitnessPlan { get; set; }
+
 
         [ForeignKey(nameof(DietPlan))]
         public int DietId { get; set; }

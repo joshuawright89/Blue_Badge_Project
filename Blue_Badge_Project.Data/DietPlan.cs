@@ -20,7 +20,7 @@ namespace Blue_Badge_Project.Data
         [Key]
         public int DietId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
+        [ForeignKey(nameof(ApplicationUser))]
         public string UserId { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }

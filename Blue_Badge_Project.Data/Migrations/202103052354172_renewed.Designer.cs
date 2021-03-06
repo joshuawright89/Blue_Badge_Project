@@ -7,13 +7,13 @@ namespace Blue_Badge_Project.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class restartMigration : IMigrationMetadata
+    public sealed partial class renewed : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(restartMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(renewed));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103030016430_restartMigration"; }
+            get { return "202103052354172_renewed"; }
         }
         
         string IMigrationMetadata.Source

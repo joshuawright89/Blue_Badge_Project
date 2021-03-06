@@ -129,7 +129,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -262,9 +262,9 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -332,7 +332,20 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, HeightInCentimeters = model.HeightInCentimeters, WeightInLbs = model.WeightInLbs, Gender = model.Gender, Goal = model.Goal, BodyType = model.BodyType };
+            var user = new ApplicationUser()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth,
+                DateJoined = model.DateJoined,
+                HeightInCentimeters = model.HeightInCentimeters,
+                WeightInLbs = model.WeightInLbs,
+                Gender = model.Gender,
+                Goal = model.Goal,
+                BodyType = model.BodyType
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -343,7 +356,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
             return Ok();
         }
-        
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
@@ -373,7 +386,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

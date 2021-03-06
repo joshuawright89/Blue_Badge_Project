@@ -50,8 +50,14 @@ namespace Blue_Badge_Project.WebAPI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public DateTime DateJoined
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
 
-        
         // AppUserId
         //public string UserId { get; set; }
         // FirstName
@@ -70,7 +76,7 @@ namespace Blue_Badge_Project.WebAPI.Models
         public GoalEnum Goal { get; set; }
         // BodyType
         public BodyTypeEnum BodyType { get; set; }
-        
+
     }
 
     public class RegisterExternalBindingModel

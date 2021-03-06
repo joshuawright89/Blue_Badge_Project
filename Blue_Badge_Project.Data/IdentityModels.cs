@@ -41,7 +41,7 @@ namespace Blue_Badge_Project.Data
             return userIdentity;
         }
 
-        public string UserId { get; set; }
+        //public string UserId { get; set; }
         public string FirstName { get; set; }
        
         public string LastName { get; set; }

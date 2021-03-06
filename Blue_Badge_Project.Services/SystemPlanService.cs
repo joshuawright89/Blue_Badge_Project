@@ -24,9 +24,8 @@ namespace Blue_Badge_Project.Services
                 {
                     SysId = plan.SysId,
                     UserId = _systemId.ToString(),
-                    FitnessId = _systemId,
+                    FitId = _systemId,
                     DietId = _systemId,
-                    //Name = plan.Name,
                     StartingWeight = plan.StartingWeight,
                     PlanGoal = plan.PlanGoal,
                     CreatedUtc = DateTimeOffset.Now

@@ -13,13 +13,11 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class SystemPlanController : ApiController
     {
-        
-        [HttpGet]
-        public IHttpActionResult GetAll()
+        private SystemPlanService CreateSystemPlanService()
         {
-            SystemPlanService systemPlanService = CreateSystemPlanService();
-            var plan = systemPlanService.GetSystemPlan();
-            return Ok(plan);
+            var userId = User.Identity.GetUserId();
+            var systemPlanService = new SystemPlanService(userId);
+            return systemPlanService;
         }
 
         [HttpPost]
@@ -36,18 +34,19 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult GetAll()
+        {
+            SystemPlanService systemPlanService = CreateSystemPlanService();
+            var plan = systemPlanService.GetSystemPlan();
+            return Ok(plan);
+        }
+
+        [HttpGet]
         public IHttpActionResult GetId(int id)
         {
             SystemPlanService systemPlanService = CreateSystemPlanService();
             var plan = systemPlanService.GetSysIdById(id);
             return Ok(plan);
-        }
-
-        private SystemPlanService CreateSystemPlanService()
-        {
-            var userId = int.Parse(User.Identity.GetUserId());
-            var systemPlanService = new SystemPlanService(userId);
-            return systemPlanService;
         }
 
         [HttpPut]

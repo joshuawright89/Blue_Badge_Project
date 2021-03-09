@@ -11,7 +11,7 @@ namespace Blue_Badge_Project.Models
     {
         public int DietId { get; set; }
         public string Name { get; set; }
-        public string DietDesc { get; set; }
+        public string DietDescription { get; set; }
         public bool BalancedDiet { get; set; }
 
         public bool Protein { get; set; }

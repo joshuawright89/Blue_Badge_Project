@@ -24,6 +24,8 @@ namespace Blue_Badge_Project.Data
         public string UserId { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+
         [Required]
         public string Name { get; set; }
         [Required]

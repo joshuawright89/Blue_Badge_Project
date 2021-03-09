@@ -12,7 +12,7 @@ namespace Blue_Badge_Project.Models
         public int DietId { get; set; }
         public string Name { get; set; }
         [Display(Name = "Description")]
-        public string DietDesc { get; set; }
+        public string DietDescription { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }

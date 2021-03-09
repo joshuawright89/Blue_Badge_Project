@@ -17,20 +17,19 @@ namespace Blue_Badge_Project.Data
         Female = 1,
         Male
     }
-
     public enum GoalEnum
     {
         GainMass = 1,
         LeanDown,
         ToneMuscle
     }
-
     public enum BodyTypeEnum
     {
         Ectomorph = 1,
         Mesomorph,
         Endomorph
     }
+
 
     public class ApplicationUser : IdentityUser
     {        
@@ -41,25 +40,29 @@ namespace Blue_Badge_Project.Data
             return userIdentity;
         }
 
-        //public string UserId { get; set; }
+    
         public string FirstName { get; set; }
        
         public string LastName { get; set; }
        
-        public string Password { get; set; }
-
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateOfBirth { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateJoined { get; set; }
-
-
         public int WeightInLbs { get; set; }
         public int HeightInCentimeters { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? DateOfBirth { get; set; }
+
+
         public GenderEnum Gender { get; set; }
-        public GoalEnum Goal { get; set; }
         public BodyTypeEnum BodyType { get; set; }
+        public GoalEnum Goal { get; set; }
+
+        
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTimeOffset DateJoined { get; set; }
+
+        
+
+        
 
     }
 

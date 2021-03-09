@@ -10,32 +10,38 @@ namespace Blue_Badge_Project.Services
 {
     public class DietService
     {
-            private readonly int _dietId;
+        private readonly string _userId;
 
-            public DietService(int dietId)
-            {
-                _dietId = dietId;
-            }
-            public bool CreateDiet(DietCreate model)
+        public DietService(string userId)
+        {
+            _userId = userId;
+        }
+
+
+        public bool CreateDiet(DietCreate model)
         {
             var entity =
                 new DietPlan()
                 {
+                    UserId = _userId,
                     Name = model.Name,
-                    DietDesc = model.DietDesc,
+                    DietDescription = model.DietDescription,
                     BalancedDiet = model.BalancedDiet,
                     Protein = model.Protein,
                     Vegatarian = model.Vegatarian,
                     Carbo = model.Carbo,
-                    DietRestrictions = model.DietRestrictions,
+                    DietRestrictions = (DietRestriction)model.DietRestrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.DietPlan.Add(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
+
+
         public DietDetail GetDietById(int dietId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -43,22 +49,31 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == _dietId);
-                return 
-                    new DietDetail
-                    {
-                        Name = entity.Name,
-                        DietDesc = entity.DietDesc,
-                        BalancedDiet = entity.BalancedDiet,
-                        Protein = entity.Protein,
-                        Vegatarian = entity.Vegatarian,
-                        Carbo = entity.Carbo,
-                        DietRestrictions = entity.DietRestrictions,
-                        CreatedUtc = DateTimeOffset.Now
-                    };
+                    .SingleOrDefault(e => e.DietId == dietId);
+                if (entity != null)
+                {
+
+                    return
+                        new DietDetail
+                        {
+                            Name = entity.Name,
+                            DietDescription = entity.DietDescription,
+                            BalancedDiet = entity.BalancedDiet,
+                            Protein = entity.Protein,
+                            Vegatarian = entity.Vegatarian,
+                            Carbo = entity.Carbo,
+                            DietRestrictions = entity.DietRestrictions,
+                            CreatedUtc = DateTimeOffset.Now
+                        };
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
-   
+
+
         public bool UpdateDiet(DietEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -66,17 +81,17 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == _dietId);
+                    .SingleOrDefault(e => e.DietId == model.DietId && e.UserId == _userId);
 
                 entity.Name = model.Name;
-                entity.DietDesc = model.DietDesc;
+                entity.DietDescription = model.DietDescription;
                 entity.BalancedDiet = model.BalancedDiet;
                 entity.Protein = model.Protein;
                 entity.Vegatarian = model.Vegatarian;
                 entity.Carbo = model.Carbo;
-                entity.DietRestrictions = model.DietRestrictions;
+                entity.DietRestrictions = (DietRestriction)model.DietRestrictions;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
 
@@ -87,23 +102,22 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == dietId);
+                    .SingleOrDefault(e => e.DietId == dietId);
 
                 ctx.DietPlan.Remove(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
 
-        // HELPER METHOD
-        // SEE ALL NOTES FOR SPECIFIC USER
+
         public IEnumerable<DietListItem> GetDiets()
         {
-           using (var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .DietPlan
-                        .Where(e => e.DietId == _dietId)
+                        .Where(e => e.UserId == _userId)
 
                         .Select(
                         e =>
@@ -111,9 +125,9 @@ namespace Blue_Badge_Project.Services
                         {
                             DietId = e.DietId,
                             Name = e.Name,
-                            DietDesc = e.DietDesc,
+                            DietDescription = e.DietDescription,
                             CreatedUtc = e.CreatedUtc,
-                            
+
                         }
                    );
                 return query.ToArray();

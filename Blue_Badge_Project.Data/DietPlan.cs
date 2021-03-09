@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
 {
-    public enum DietRestrictions
+    public enum DietRestriction
     {
         Sugar = 1, 
         Gluten,
         Carbs,
         NoRestrictions
     }
+
     public class DietPlan   
     {
         [Key]
@@ -29,7 +30,7 @@ namespace Blue_Badge_Project.Data
         [Required]
         public string Name { get; set; }
         [Required]
-        public string DietDesc { get; set; }
+        public string DietDescription { get; set; }
         [Required]
 
         public bool BalancedDiet { get; set; }
@@ -43,6 +44,6 @@ namespace Blue_Badge_Project.Data
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public DietRestrictions DietRestrictions { get; set; }
+        public DietRestriction DietRestrictions { get; set; }
     }
 }

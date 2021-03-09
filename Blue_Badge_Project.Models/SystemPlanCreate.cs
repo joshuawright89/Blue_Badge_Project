@@ -18,11 +18,12 @@ namespace Blue_Badge_Project.Models
     public class SystemPlanCreate
     {
         public int SysId { get; set; }
+        public string PlanGoal { get; set; }
 
         [Required]
-        [Range(85, 400)]
         public double StartingWeight { get; set; }
+        public int FitId { get; set; }
+        public int DietId { get; set; }
 
-        public string PlanGoal { get; set; }//does this need to be an Diet/Fitness==or enum
     }
 }

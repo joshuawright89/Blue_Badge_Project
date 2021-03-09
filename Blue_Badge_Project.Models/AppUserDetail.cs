@@ -11,18 +11,18 @@ namespace Blue_Badge_Project.Models
 {
     public class AppUserDetail
     {
-        public string UserId { get; set; }
-
-        //public Guid OwnerId { get; set; }
+        public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
 
-        public int Age { get; set; }
+        //public int Age { get; set; }
+        
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateJoined { get; set; }
+        public DateTimeOffset? DateJoined { get; set; }
 
 
         public int WeightInLbs { get; set; }

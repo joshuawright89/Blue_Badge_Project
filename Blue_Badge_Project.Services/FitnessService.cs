@@ -10,11 +10,11 @@ namespace Blue_Badge_Project.Services
 {
     public class FitnessService 
     {
-        private readonly int _fitId;
+        private readonly string _userId;
 
-        public FitnessService(int fitId)
+        public FitnessService(string userId)
         {
-            _fitId = fitId;
+            _userId = userId;
         }
 
 
@@ -23,6 +23,7 @@ namespace Blue_Badge_Project.Services
             var entity =
                 new FitnessPlan()
                 {
+                    UserId = _userId,
                     Name = model.Name,
                     FitDescription = model.FitDescription,
                     WeightLoss = model.WeightLoss,
@@ -37,14 +38,16 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public FitnessDetail GetFitnessById(int Id)
+
+
+        public FitnessDetail GetFitnessById(int fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == Id);
+                    .SingleOrDefault(e => e.FitId == fitId);
                 return
                    new FitnessDetail
                    {
@@ -59,6 +62,8 @@ namespace Blue_Badge_Project.Services
                    };
             }
         }
+
+
         public bool UpdateFitness(FitnessEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -66,7 +71,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == model.FitId);
+                    .SingleOrDefault(e => e.FitId == model.FitId && e.UserId == _userId);
                     
                 entity.Name = model.Name;
                 entity.FitDescription = model.FitDescription;
@@ -78,19 +83,23 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteFitness(int _fitId)
+
+
+        public bool DeleteFitness(int fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == _fitId);
+                    .SingleOrDefault(e => e.FitId == fitId);
 
                 ctx.FitnessPlan.Remove(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
+
+
         public IEnumerable<FitnessListItem> GetFitness()
         {
             using (var ctx = new ApplicationDbContext())
@@ -98,7 +107,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .FitnessPlan
-                        .Where(e => e.FitId == _fitId)
+                        .Where(e => e.UserId == _userId)
                         .Select(
                         e =>
                         new FitnessListItem

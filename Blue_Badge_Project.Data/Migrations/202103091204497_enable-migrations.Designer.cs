@@ -7,13 +7,13 @@ namespace Blue_Badge_Project.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class renewed : IMigrationMetadata
+    public sealed partial class enablemigrations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(renewed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(enablemigrations));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103061633021_renewed"; }
+            get { return "202103091204497_enable-migrations"; }
         }
         
         string IMigrationMetadata.Source

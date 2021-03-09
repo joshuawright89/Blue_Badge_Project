@@ -10,13 +10,13 @@ namespace Blue_Badge_Project.Models
 {
     public class FitnessDetail
     {
-        public int FitnessId { get; set; }
+        //public int FitId { get; set; }
         public string Name { get; set; }
-        public string FitnessDesc { get; set; }
+        public string FitDescription { get; set; }
         public bool WeightLoss { get; set; }
         public bool MuscleGain { get; set; }
         public bool Endurance { get; set; }
-        public FitRestrictions FitnessRestrictions { get; set; }
+        public RestrictionsEnum Restrictions { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "Modified")]

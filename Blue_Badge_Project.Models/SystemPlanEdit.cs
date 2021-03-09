@@ -12,7 +12,7 @@ namespace Blue_Badge_Project.Models
 
         public double StartingWeight { get; set; }
 
-        public string PlanGoal { get; set; }//does this need to be an Diet/Fitness==or enum
+        public string PlanGoal { get; set; }
 
     }
 }

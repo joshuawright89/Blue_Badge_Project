@@ -11,39 +11,45 @@ using System.Web.Http;
 namespace Blue_Badge_Project.WebAPI.Controllers
 {
     [Authorize]
-    public class AppUserController : ApiController //"Inside the controller, we're going to add a method that creates [an AppUserService]."  ...  "This will allow us to use our [AppUserService] in our methods."
+    public class AppUserController : ApiController
     {
-        /*private AppUserService CreateAppUserService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var appUserService = new AppUserService(userId);
-            return appUserService;
-        }*/
-
-        /*public IHttpActionResult Get() //"Now let's add a Get All method" 4.03
-        {
-            AppUserService appUserService = CreateAppUserService();
-            var appUsers = appUserService.GetAppUsersBySystemPlan();
-            return Ok(appUsers);
-        }*/
-
-        /*public IHttpActionResult Post(AppUserCreate appUser) //4.03
+        [HttpPost]
+        public IHttpActionResult PostAppUserCreate(AppUserCreate appUserCreate)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            var service = CreateAppUserService();
+            var appUserService = CreateAppUserService();
 
-            if (!service.CreateAppUser(appUser))
-            {
+            if (!appUserService.CreateAppUser(appUserCreate))
                 return InternalServerError();
-            }
             return Ok();
-        }*/
+        }
+        [HttpGet]
+        public IHttpActionResult GetAllAppUsers()
+        {
+            AppUserService appUserService = CreateAppUserService();
+            var users = appUserService.GetAllUsers();
+            return Ok(users);
+        }
+        [HttpGet]
+        public IHttpActionResult GetAppUserDetail(string userId)
+        {
+            AppUserService appUserService = CreateAppUserService();
+            var appUserDetail = appUserService.GetUserId(userId);
+            return Ok(appUserDetail);
+        }
+        public IHttpActionResult UserByLastName(string lastName)
+        {
+            AppUserService appUserService = CreateAppUserService();
+            var userLastName = appUserService.GetAppUsersByLastName(lastName);
+            return Ok(userLastName);
+        }
+        private AppUserService CreateAppUserService()
+        {
+            var userId = int.Parse(User.Identity.GetUserId());
+            var appUserDetail = new AppUserService(userId.ToString());
+            return appUserDetail;
+        }
     }
-
-
 }
-

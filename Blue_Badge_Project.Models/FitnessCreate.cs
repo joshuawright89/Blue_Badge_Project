@@ -10,10 +10,10 @@ namespace Blue_Badge_Project.Models
     public class FitnessCreate
     {
         public string Name { get; set; }
-        public string FitnessDesc { get; set; }
+        public string FitDescription { get; set; }
         public bool WeightLoss { get; set; }
         public bool MuscleGain { get; set; }
         public bool Endurance { get; set; }
-        public FitRestrictions FitnessRestrictions { get; set; }
+        public RestrictionsEnum Restrictions { get; set; }
     }
 }

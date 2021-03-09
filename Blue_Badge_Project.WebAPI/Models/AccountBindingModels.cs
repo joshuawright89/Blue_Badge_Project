@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Blue_Badge_Project.Data;
 using Newtonsoft.Json;
+using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.WebAPI.Models
 {
@@ -49,10 +50,16 @@ namespace Blue_Badge_Project.WebAPI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public DateTime DateJoined
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
 
-        
         // AppUserId
-        public int AppUserId { get; set; }
+        //public string UserId { get; set; }
         // FirstName
         public string FirstName { get; set; }
         // LastName
@@ -69,7 +76,7 @@ namespace Blue_Badge_Project.WebAPI.Models
         public GoalEnum Goal { get; set; }
         // BodyType
         public BodyTypeEnum BodyType { get; set; }
-        
+
     }
 
     public class RegisterExternalBindingModel

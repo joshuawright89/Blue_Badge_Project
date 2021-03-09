@@ -1,12 +1,18 @@
-﻿using System;
+﻿using Blue_Badge_Project.Data;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.Models
 {
     public class AppUserDetail
     {
-        public int AppUserId { get; set; }
-        public Guid OwnerId { get; set; }
+        public string UserId { get; set; }
+
+        //public Guid OwnerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -22,21 +28,10 @@ namespace Blue_Badge_Project.Models
         public int HeightInCentimeters { get; set; }
 
         public GenderEnum Gender { get; set; }
-        /// 
-        /// Female = 1,
-        /// Male
-        /// 
+         
         public BodyTypeEnum BodyType { get; set; }
-        /// 
-        /// Ectomorph = 1,
-        /// Mesomorph,
-        /// Endomorph
-        /// 
+ 
         public GoalEnum Goal { get; set; }
-        ///
-        /// Gain Mass = 1,
-        /// Lean down,
-        /// Tone muscle,
-        /// 
+ 
     }
 }

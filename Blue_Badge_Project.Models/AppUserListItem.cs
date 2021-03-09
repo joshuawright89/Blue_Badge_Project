@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.Models
 {
@@ -12,7 +13,7 @@ namespace Blue_Badge_Project.Models
     public class AppUserListItem //What properties to display when seeing a list of App Users??
     {
         [Display(Name = "User ID:")]
-        public int AppUserId { get; set; }
+        public string UserId { get; set; }
         [Display(Name = "First:")]
         public string FirstName { get; set; }
         [Display(Name = "Last:")]
@@ -20,7 +21,8 @@ namespace Blue_Badge_Project.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateJoined { get; set; }
-        public int Age { get; set; }
+        //[Display(Name = "Age:")]
+        //public int Age { get; set; }
         
         [Display(Name = "Gender:")]        
         public GenderEnum Gender { get; set; }

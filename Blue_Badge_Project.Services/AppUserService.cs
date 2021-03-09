@@ -18,7 +18,7 @@ namespace Blue_Badge_Project.Services
             
         }
 
-   
+        //This method is just creating another ApplicationUser, all of this can be done on Register, if you need to update the info just use the update methods.
         public bool CreateAppUser(AppUserCreate model) 
         {
             var entity =
@@ -49,7 +49,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                     .Users
-                    .Where(e => e.Id == _userId)
+                    //.Where(e => e.Id == _userId)
                     .Select(
                         e =>
                             new AppUserListItem
@@ -119,7 +119,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .Users
-                    .Single(e => e.Id == userId);
+                    .SingleOrDefault(e => e.Id == userId);
                 return
                     new AppUserDetail
                     {
@@ -145,7 +145,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .Users
-                    .Single(e => e.Id == e.Id);
+                    .SingleOrDefault(e => e.Id == _userId);
 
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
@@ -157,7 +157,8 @@ namespace Blue_Badge_Project.Services
                 entity.BodyType = (Data.BodyTypeEnum)model.BodyType;
                 entity.Goal = (Data.GoalEnum)model.Goal;
                 entity.DateJoined = DateTimeOffset.Now;
-                return ctx.SaveChanges() > 1;
+
+                return ctx.SaveChanges() == 1;
 
             }
         }

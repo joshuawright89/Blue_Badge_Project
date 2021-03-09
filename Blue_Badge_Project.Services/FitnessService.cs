@@ -18,14 +18,13 @@ namespace Blue_Badge_Project.Services
         }
 
 
-
         public bool CreateFitness(FitnessCreate model)
         {
             var entity =
                 new FitnessPlan()
                 {
-                    Name = model.Name,
                     UserId = _userId,
+                    Name = model.Name,
                     FitDescription = model.FitDescription,
                     WeightLoss = model.WeightLoss,
                     MuscleGain = model.MuscleGain,
@@ -41,14 +40,14 @@ namespace Blue_Badge_Project.Services
         }
 
 
-        public FitnessDetail GetFitnessById(int FitId)
+        public FitnessDetail GetFitnessById(int fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == FitId);
+                    .SingleOrDefault(e => e.FitId == fitId);
                 return
                    new FitnessDetail
                    {
@@ -72,7 +71,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == e.FitId);
+                    .SingleOrDefault(e => e.FitId == model.FitId && e.UserId == _userId);
                     
                 entity.Name = model.Name;
                 entity.FitDescription = model.FitDescription;
@@ -86,17 +85,17 @@ namespace Blue_Badge_Project.Services
         }
 
 
-        public bool DeleteFitness(int _fitId)
+        public bool DeleteFitness(int fitId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == _fitId);
+                    .SingleOrDefault(e => e.FitId == fitId);
 
                 ctx.FitnessPlan.Remove(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
 

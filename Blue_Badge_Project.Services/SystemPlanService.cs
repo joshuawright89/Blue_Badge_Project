@@ -17,6 +17,7 @@ namespace Blue_Badge_Project.Services
             _userId = userId;
         }
 
+
         public bool CreateSystemPlan(SystemPlanCreate plan)
         {
             var entity =
@@ -80,8 +81,6 @@ namespace Blue_Badge_Project.Services
                 {
                     entity.PlanGoal = plan.PlanGoal;
                     entity.StartingWeight = plan.StartingWeight;
-
-
                     entity.ModifiedUtc = DateTimeOffset.UtcNow;
                     return ctx.SaveChanges() == 1;
                 }
@@ -104,7 +103,7 @@ namespace Blue_Badge_Project.Services
                     .SingleOrDefault(e => e.SysId == id);
 
                 ctx.SystemPlan.Remove(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 0;
             }
         }
 

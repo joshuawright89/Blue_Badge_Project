@@ -118,7 +118,8 @@ namespace Blue_Badge_Project.Services
             {
                 var entity =
                     ctx
-                    .Users.Single(e => e.Id == userId);
+                    .Users
+                    .Single(e => e.Id == _userId);
                 return
                     new AppUserDetail
                     {

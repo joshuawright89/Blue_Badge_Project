@@ -58,7 +58,7 @@ namespace Blue_Badge_Project.Services
                         Protein = entity.Protein,
                         Vegatarian = entity.Vegatarian,
                         Carbo = entity.Carbo,
-                        DietRestrictions = (DietRestriction) entity.DietRestrictions,
+                        DietRestrictions = entity.DietRestrictions,
                         CreatedUtc = DateTimeOffset.Now
                     };
             }

@@ -98,6 +98,10 @@
     <Compile Include="Migrations\202103090522571_newAppUserEdit.designer.cs">
       <DependentUpon>202103090522571_newAppUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103091204497_enable-migrations.cs" />
+    <Compile Include="Migrations\202103091204497_enable-migrations.designer.cs">
+      <DependentUpon>202103091204497_enable-migrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SystemPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103090522571_newAppUserEdit.resx">
       <DependentUpon>202103090522571_newAppUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091204497_enable-migrations.resx">
+      <DependentUpon>202103091204497_enable-migrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

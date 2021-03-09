@@ -16,9 +16,11 @@ namespace Blue_Badge_Project.Models
         public string LastName { get; set; }
         public string Email { get; set; }
 
-        public int Age { get; set; }
+        //public int Age { get; set; }
+        
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? DateOfBirth { get; set; }
+        
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTimeOffset? DateJoined { get; set; }
 

@@ -14,17 +14,26 @@ namespace Blue_Badge_Project.Models
     {
         [Display(Name = "ID:")]
         public string UserId { get; set; }
+        
         [Display(Name = "First:")]
         public string FirstName { get; set; }
+        
         [Display(Name = "Last:")]
         public string LastName { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTimeOffset? DateJoined { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         
         [Display(Name = "Gender:")]        
         public GenderEnum Gender { get; set; }
+
+        [Display(Name = "Body Type")]
+        public BodyTypeEnum BodyType { get; set; }
+
         [Display(Name = "Goal:")]
         public GoalEnum Goal { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTimeOffset? DateJoined { get; set; }
     }
 }

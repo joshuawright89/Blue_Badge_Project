@@ -13,6 +13,13 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class AppUserController : ApiController
     {
+        private AppUserService CreateAppUserService()
+        {
+            var id = User.Identity.GetUserId();
+            var appUserDetail = new AppUserService(id.ToString());
+            return appUserDetail;
+        }
+
         [HttpPost]
         public IHttpActionResult PostAppUserCreate(AppUserCreate appUserCreate)
         {
@@ -32,25 +39,27 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             var users = appUserService.GetAllUsers();
             return Ok(users);
         }
+
         [HttpGet]
-        public IHttpActionResult GetAppUserId(string userId)
+        public IHttpActionResult GetAppUserId(string id)
         {
             AppUserService appUserService = CreateAppUserService();
-            var appUserDetail = appUserService.GetUserId(userId);
+            var appUserDetail = appUserService.GetUserId(id);
             return Ok(appUserDetail);
         }
 
-        public IHttpActionResult UserByLastName(string lastName)
+        [HttpPut]
+        public IHttpActionResult UpdatePlan(AppUserEdit model)
         {
-            AppUserService appUserService = CreateAppUserService();
-            var userLastName = appUserService.GetAppUsersByLastName(lastName);
-            return Ok(userLastName);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateAppUserService();
+            if (!service.UpdatePlan(model))
+                return InternalServerError();
+            return Ok();
         }
-        private AppUserService CreateAppUserService()
-        {
-            var userId = User.Identity.GetUserId();
-            var appUserDetail = new AppUserService(userId.ToString());
-            return appUserDetail;
-        }
+            
+        
     }
 }

@@ -10,15 +10,15 @@ namespace Blue_Badge_Project.Services
 {
     public class DietService
     {
-        //private readonly int _dietId;
-
         private readonly string _userId;
 
             public DietService(string userId)
             {
                 _userId = userId;
             }
-            public bool CreateDiet(DietCreate model)
+
+
+        public bool CreateDiet(DietCreate model)
         {
             var entity =
                 new DietPlan()
@@ -32,12 +32,15 @@ namespace Blue_Badge_Project.Services
                     DietRestrictions = (DietRestriction) model.DietRestrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
+        
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.DietPlan.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
+
+
         public DietDetail GetDietById(int DietId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -60,6 +63,7 @@ namespace Blue_Badge_Project.Services
                     };
             }
         }
+
    
         public bool UpdateDiet(DietEdit model)
         {
@@ -96,8 +100,7 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-        // HELPER METHOD
-        // SEE ALL NOTES FOR SPECIFIC USER
+      
         public IEnumerable<DietListItem> GetDiets()
         {
            using (var ctx = new ApplicationDbContext())

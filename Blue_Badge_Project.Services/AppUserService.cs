@@ -11,8 +11,6 @@ namespace Blue_Badge_Project.Services
 {
     public class AppUserService
     {
-  
-        
         private readonly string _userId;
         public AppUserService(string userId)
         {
@@ -29,8 +27,9 @@ namespace Blue_Badge_Project.Services
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    HeightInCentimeters = model.Height,
                     WeightInLbs = model.Weight,
+                    HeightInCentimeters = model.Height,
+                    DateOfBirth = (DateTime) model.DateOfBirth,
                     Gender = (Data.GenderEnum)model.Gender,
                     BodyType = (Data.BodyTypeEnum)model.BodyType,
                     Goal = (Data.GoalEnum)model.Goal,
@@ -58,9 +57,11 @@ namespace Blue_Badge_Project.Services
                                 UserId = e.Id,
                                 FirstName = e.FirstName,
                                 LastName = e.LastName,
-                                DateJoined = e.DateJoined,
+                                DateOfBirth = e.DateOfBirth,
                                 Gender = e.Gender,
-                                Goal = e.Goal
+                                BodyType = e.BodyType,
+                                Goal = e.Goal,
+                                DateJoined = e.DateJoined,
                             }
                         );
                 return query.ToArray();
@@ -110,51 +111,53 @@ namespace Blue_Badge_Project.Services
             }
         }*/
 
-        public IEnumerable<AppUserListItem> GetAppUsersByLastName(string lastName)  //Search by last name
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Users
-                    .Where(e => e.LastName == lastName)
-                    .Select(
-                        e =>
-                        new AppUserListItem
-                        {
-                            FirstName = e.FirstName,
-                            LastName = e.LastName,
-                            Gender = e.Gender
-                        }
-                        );
-                return query.ToArray();
-            }
-        }
-
+       
         public AppUserDetail GetUserId(string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-
-                
                 var entity =
                     ctx
                     .Users.Single(e => e.Id == userId);
                 return
                     new AppUserDetail
                     {
-                        Id = entity.Id,
+                        //Id = entity.Id,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         Email = entity.Email,
                         DateOfBirth = entity.DateOfBirth,
-                        DateJoined = entity.DateJoined,
                         WeightInLbs = entity.WeightInLbs,
                         HeightInCentimeters = entity.HeightInCentimeters,
                         Gender = entity.Gender,
+                        BodyType = entity.BodyType,
                         Goal = entity.Goal,
-                        BodyType = entity.BodyType
+                        DateJoined = entity.DateJoined
                     };
+            }
+        }
+
+        public bool UpdatePlan(AppUserEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Users
+                    .Single(e => e.Id == e.Id);
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.Email = model.Email;
+                entity.WeightInLbs = model.Weight;
+                entity.HeightInCentimeters = model.Height;
+                entity.DateOfBirth = (DateTime)model.DateOfBirth;
+                entity.Gender = (Data.GenderEnum)model.Gender;
+                entity.BodyType = (Data.BodyTypeEnum)model.BodyType;
+                entity.Goal = (Data.GoalEnum)model.Goal;
+                entity.DateJoined = DateTimeOffset.Now;
+                return ctx.SaveChanges() > 1;
+
             }
         }
     }

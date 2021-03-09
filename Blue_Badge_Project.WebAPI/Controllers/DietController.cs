@@ -13,6 +13,13 @@ namespace Blue_Badge_Project.WebAPI.Controllers
     [Authorize]
     public class DietController : ApiController
     {
+        private DietService DisplayDietService()
+        {
+            var userId = User.Identity.GetUserId();
+            var dietService = new DietService(userId);
+            return dietService;
+        }
+
         [HttpPost]
         public IHttpActionResult Post(DietCreate diet)
         {
@@ -24,13 +31,6 @@ namespace Blue_Badge_Project.WebAPI.Controllers
           return Ok();
         }
 
-        //Need app user table done 
-        private DietService DisplayDietService()
-        {
-            var userId = User.Identity.GetUserId();
-            var dietService = new DietService(userId);
-            return dietService;
-        }
         [HttpGet]
         public IHttpActionResult GetAll()
         {

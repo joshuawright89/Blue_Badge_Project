@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="AppUserCreate.cs" />
     <Compile Include="AppUserDetail.cs" />
+    <Compile Include="AppUserEdit.cs" />
     <Compile Include="AppUserListItem.cs" />
     <Compile Include="FitnessEdit.cs" />
     <Compile Include="FitnessDetail.cs" />

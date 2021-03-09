@@ -10,8 +10,6 @@ namespace Blue_Badge_Project.Services
 {
     public class FitnessService 
     {
-        //private readonly int _fitId;
-
         private readonly string _userId;
 
         public FitnessService(string userId)
@@ -41,6 +39,8 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+
         public FitnessDetail GetFitnessById(int FitId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -63,6 +63,8 @@ namespace Blue_Badge_Project.Services
                    };
             }
         }
+
+
         public bool UpdateFitness(FitnessEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -82,6 +84,8 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+
         public bool DeleteFitness(int _fitId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -95,6 +99,8 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() > 0;
             }
         }
+
+
         public IEnumerable<FitnessListItem> GetFitness()
         {
             using (var ctx = new ApplicationDbContext())

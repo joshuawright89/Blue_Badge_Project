@@ -22,11 +22,13 @@ namespace Blue_Badge_Project.Services
             var entity =
                 new SystemPlan()
                 {
-                    SysId = plan.SysId,
                     Id = _userId,
+                    FitId = plan.FitId,
+                    DietId = plan.DietId,
                     PlanGoal = plan.PlanGoal,
                     StartingWeight = plan.StartingWeight,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    ModifiedUtc = DateTime.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -35,7 +37,7 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-        
+
         public SystemPlanDetail GetSysIdById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -43,15 +45,24 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .SystemPlan
-                    .Single(e => e.SysId == id); 
-                return
-                   new SystemPlanDetail
-                   {
-                       SysId = entity.SysId,
-                       PlanGoal = entity.PlanGoal,
-                       StartingWeight = entity.StartingWeight,
-                       CreatedUtc = DateTimeOffset.Now
-                   };
+                    .SingleOrDefault(e => e.SysId == id);
+                if (entity != null)
+                {
+                    return
+                  new SystemPlanDetail
+                  {
+                      SysId = entity.SysId,
+                      PlanGoal = entity.PlanGoal,
+                      StartingWeight = entity.StartingWeight,
+                      CreatedUtc = DateTimeOffset.Now
+                  };
+                }
+                else
+                {
+                    return null;
+                }
+
+
             }
         }
 
@@ -63,13 +74,22 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .SystemPlan
-                    .Single(e => e.SysId == plan.SysId);
-                entity.PlanGoal = plan.PlanGoal;
-                entity.StartingWeight = plan.StartingWeight;
-                
+                    .SingleOrDefault(e => e.SysId == plan.SysId);
 
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                return ctx.SaveChanges() > 0;
+                if (entity != null)
+                {
+                    entity.PlanGoal = plan.PlanGoal;
+                    entity.StartingWeight = plan.StartingWeight;
+
+
+                    entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                    return ctx.SaveChanges() == 1;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
 
@@ -81,7 +101,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .SystemPlan
-                    .Single(e => e.SysId == id);
+                    .SingleOrDefault(e => e.SysId == id);
 
                 ctx.SystemPlan.Remove(entity);
                 return ctx.SaveChanges() > 0;
@@ -104,7 +124,7 @@ namespace Blue_Badge_Project.Services
                             SysId = e.SysId,
                             PlanGoal = e.PlanGoal,
                             StartingWeight = e.StartingWeight,
-                            
+
 
                         }
                    );

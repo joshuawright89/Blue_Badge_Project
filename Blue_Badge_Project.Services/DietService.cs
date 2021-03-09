@@ -12,10 +12,10 @@ namespace Blue_Badge_Project.Services
     {
         private readonly string _userId;
 
-            public DietService(string userId)
-            {
-                _userId = userId;
-            }
+        public DietService(string userId)
+        {
+            _userId = userId;
+        }
 
 
         public bool CreateDiet(DietCreate model)
@@ -23,16 +23,17 @@ namespace Blue_Badge_Project.Services
             var entity =
                 new DietPlan()
                 {
+                    UserId = _userId,
                     Name = model.Name,
                     DietDescription = model.DietDescription,
                     BalancedDiet = model.BalancedDiet,
                     Protein = model.Protein,
                     Vegatarian = model.Vegatarian,
                     Carbo = model.Carbo,
-                    DietRestrictions = (DietRestriction) model.DietRestrictions,
+                    DietRestrictions = (DietRestriction)model.DietRestrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
-        
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.DietPlan.Add(entity);
@@ -48,23 +49,31 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == DietId);
-                return 
-                    new DietDetail
-                    {
-                        Name = entity.Name,
-                        DietDescription = entity.DietDescription,
-                        BalancedDiet = entity.BalancedDiet,
-                        Protein = entity.Protein,
-                        Vegatarian = entity.Vegatarian,
-                        Carbo = entity.Carbo,
-                        DietRestrictions = entity.DietRestrictions,
-                        CreatedUtc = DateTimeOffset.Now
-                    };
+                    .SingleOrDefault(e => e.DietId == DietId && e.UserId == _userId);
+                if (entity != null)
+                {
+
+                    return
+                        new DietDetail
+                        {
+                            Name = entity.Name,
+                            DietDescription = entity.DietDescription,
+                            BalancedDiet = entity.BalancedDiet,
+                            Protein = entity.Protein,
+                            Vegatarian = entity.Vegatarian,
+                            Carbo = entity.Carbo,
+                            DietRestrictions = entity.DietRestrictions,
+                            CreatedUtc = DateTimeOffset.Now
+                        };
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
-   
+
         public bool UpdateDiet(DietEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -80,7 +89,7 @@ namespace Blue_Badge_Project.Services
                 entity.Protein = model.Protein;
                 entity.Vegatarian = model.Vegatarian;
                 entity.Carbo = model.Carbo;
-                entity.DietRestrictions = (DietRestriction) model.DietRestrictions;
+                entity.DietRestrictions = (DietRestriction)model.DietRestrictions;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
                 return ctx.SaveChanges() > 1;
             }
@@ -100,10 +109,10 @@ namespace Blue_Badge_Project.Services
             }
         }
 
-      
+
         public IEnumerable<DietListItem> GetDiets()
         {
-           using (var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
@@ -118,7 +127,7 @@ namespace Blue_Badge_Project.Services
                             Name = e.Name,
                             DietDescription = e.DietDescription,
                             CreatedUtc = e.CreatedUtc,
-                            
+
                         }
                    );
                 return query.ToArray();

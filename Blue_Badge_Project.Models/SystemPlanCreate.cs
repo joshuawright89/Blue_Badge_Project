@@ -22,7 +22,8 @@ namespace Blue_Badge_Project.Models
 
         [Required]
         public double StartingWeight { get; set; }
-
+        public int FitId { get; set; }
+        public int DietId { get; set; }
 
     }
 }

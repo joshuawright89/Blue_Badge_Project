@@ -119,7 +119,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .Users
-                    .Single(e => e.Id == _userId);
+                    .Single(e => e.Id == userId);
                 return
                     new AppUserDetail
                     {

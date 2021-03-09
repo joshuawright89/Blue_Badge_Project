@@ -90,9 +90,9 @@
     <Compile Include="FitnessPlan.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="DietPlan.cs" />
-    <Compile Include="Migrations\202103061633021_renewed.cs" />
-    <Compile Include="Migrations\202103061633021_renewed.designer.cs">
-      <DependentUpon>202103061633021_renewed.cs</DependentUpon>
+    <Compile Include="Migrations\202103090334223_userId.cs" />
+    <Compile Include="Migrations\202103090334223_userId.designer.cs">
+      <DependentUpon>202103090334223_userId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SystemPlan.cs" />
@@ -103,8 +103,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103061633021_renewed.resx">
-      <DependentUpon>202103061633021_renewed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103090334223_userId.resx">
+      <DependentUpon>202103090334223_userId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

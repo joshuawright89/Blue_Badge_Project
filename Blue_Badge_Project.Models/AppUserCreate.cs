@@ -7,9 +7,7 @@ namespace Blue_Badge_Project.Models
 
     public class AppUserCreate 
     {
-        //[Required]
-        //[MaxLength(20, ErrorMessage = "Do not exceed twenty (20) characters.")]
-        //public string UserId { get; set; }
+        
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -18,7 +16,7 @@ namespace Blue_Badge_Project.Models
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public int Height { get; set; }
         public int Weight { get; set; }

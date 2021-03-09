@@ -23,17 +23,15 @@ namespace Blue_Badge_Project.Services
                 new SystemPlan()
                 {
                     SysId = plan.SysId,
-                    UserId = _userId,
-                    //FitId = _userId,
-                    //DietId = _userId,
-                    StartingWeight = plan.StartingWeight,
+                    Id = _userId,
                     PlanGoal = plan.PlanGoal,
+                    StartingWeight = plan.StartingWeight,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.SystemPlan.Add(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() == 1;
             }
         }
 
@@ -50,9 +48,8 @@ namespace Blue_Badge_Project.Services
                    new SystemPlanDetail
                    {
                        SysId = entity.SysId,
-                       //Name = entity.Name,
-                       StartingWeight = entity.StartingWeight,
                        PlanGoal = entity.PlanGoal,
+                       StartingWeight = entity.StartingWeight,
                        CreatedUtc = DateTimeOffset.Now
                    };
             }
@@ -66,9 +63,10 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .SystemPlan
-                    .Single(e => e.SysId == plan.SysId); 
-                entity.StartingWeight = plan.StartingWeight;
+                    .Single(e => e.SysId == plan.SysId);
                 entity.PlanGoal = plan.PlanGoal;
+                entity.StartingWeight = plan.StartingWeight;
+                
 
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
                 return ctx.SaveChanges() > 0;
@@ -97,16 +95,16 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .SystemPlan
-                        .Where(e => e.UserId == _userId)
+                        .Where(e => e.Id == _userId)
 
                         .Select(
                         e =>
                         new SystemPlanListItems
                         {
                             SysId = e.SysId,
-                            //Name = e.Name,
-                            StartingWeight = e.StartingWeight,
                             PlanGoal = e.PlanGoal,
+                            StartingWeight = e.StartingWeight,
+                            
 
                         }
                    );

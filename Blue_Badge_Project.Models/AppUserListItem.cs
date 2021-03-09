@@ -9,10 +9,10 @@ using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.Models
 {
-    //public enum Gender { Male, Female} // pay attention to where you define this: Data Layer? Service Layer, Model Layer? You want to define it once, and make appropriate references/using statements
-    public class AppUserListItem //What properties to display when seeing a list of App Users??
+   
+    public class AppUserListItem 
     {
-        [Display(Name = "User ID:")]
+        [Display(Name = "ID:")]
         public string UserId { get; set; }
         [Display(Name = "First:")]
         public string FirstName { get; set; }
@@ -20,9 +20,7 @@ namespace Blue_Badge_Project.Models
         public string LastName { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateJoined { get; set; }
-        //[Display(Name = "Age:")]
-        //public int Age { get; set; }
+        public DateTimeOffset? DateJoined { get; set; }
         
         [Display(Name = "Gender:")]        
         public GenderEnum Gender { get; set; }

@@ -34,7 +34,7 @@ namespace Blue_Badge_Project.Services
                     Gender = (Data.GenderEnum)model.Gender,
                     BodyType = (Data.BodyTypeEnum)model.BodyType,
                     Goal = (Data.GoalEnum)model.Goal,
-                    DateJoined = DateTime.Now
+                    DateJoined = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -143,7 +143,7 @@ namespace Blue_Badge_Project.Services
                 return
                     new AppUserDetail
                     {
-                        UserId = entity.Id,
+                        Id = entity.Id,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         Email = entity.Email,

@@ -49,10 +49,10 @@ namespace Blue_Badge_Project.Data
         public string Password { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DateJoined { get; set; }
-
+        public DateTimeOffset DateJoined { get; set; }
 
         public int WeightInLbs { get; set; }
         public int HeightInCentimeters { get; set; }

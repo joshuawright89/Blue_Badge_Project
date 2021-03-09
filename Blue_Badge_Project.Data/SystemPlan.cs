@@ -8,22 +8,14 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Data
 {
-    /*public enum PlanGoal
-    {
-        LooseWeight = 1,
-        GainMuscleMass,
-        BecomeHealthly,
-        NoRestrictions
-    }*/
-
-    
+   
     public class SystemPlan
     {
         [Key]
         public int SysId { get; set; }
 
         [ForeignKey(nameof(ApplicationUser))]
-        public string UserId { get; set; }
+        public string Id { get; set; }
         public virtual ApplicationUser ApplicationUser{ get; set; }
 
 
@@ -38,12 +30,12 @@ namespace Blue_Badge_Project.Data
         public virtual DietPlan DietPlan{ get; set; }
 
 
+
         [Required]
         public string PlanGoal { get; set; }
 
-        [Required, Range(85, 400)]
+        [Required]
         public double StartingWeight { get; set; }
-
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }

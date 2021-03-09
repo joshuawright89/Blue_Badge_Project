@@ -20,14 +20,6 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             return systemPlanService;
         }
 
-        [HttpGet]
-        public IHttpActionResult GetAll()
-        {
-            SystemPlanService systemPlanService = CreateSystemPlanService();
-            var plan = systemPlanService.GetSystemPlan();
-            return Ok(plan);
-        }
-
         [HttpPost]
         public IHttpActionResult Post(SystemPlanCreate model)
         {
@@ -39,6 +31,14 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             if (!service.CreateSystemPlan(model))
                 return InternalServerError();
             return Ok();
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAll()
+        {
+            SystemPlanService systemPlanService = CreateSystemPlanService();
+            var plan = systemPlanService.GetSystemPlan();
+            return Ok(plan);
         }
 
         [HttpGet]

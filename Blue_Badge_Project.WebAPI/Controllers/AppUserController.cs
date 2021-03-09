@@ -33,12 +33,13 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             return Ok(users);
         }
         [HttpGet]
-        public IHttpActionResult GetAppUserDetail(string userId)
+        public IHttpActionResult GetAppUserId(string userId)
         {
             AppUserService appUserService = CreateAppUserService();
             var appUserDetail = appUserService.GetUserId(userId);
             return Ok(appUserDetail);
         }
+
         public IHttpActionResult UserByLastName(string lastName)
         {
             AppUserService appUserService = CreateAppUserService();
@@ -47,7 +48,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         }
         private AppUserService CreateAppUserService()
         {
-            var userId = int.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var appUserDetail = new AppUserService(userId.ToString());
             return appUserDetail;
         }

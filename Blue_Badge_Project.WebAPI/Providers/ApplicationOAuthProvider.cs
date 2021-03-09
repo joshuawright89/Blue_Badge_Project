@@ -5,12 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Blue_Badge_Project.WebAPI.Models;
 using Blue_Badge_Project.Data;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Blue_Badge_Project.WebAPI.Providers
 {

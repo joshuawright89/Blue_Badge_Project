@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Blue_Badge_Project.Data;
 using Newtonsoft.Json;
+using static Blue_Badge_Project.Data.ApplicationUser;
 
 namespace Blue_Badge_Project.WebAPI.Models
 {
@@ -32,7 +34,7 @@ namespace Blue_Badge_Project.WebAPI.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class RegisterBindingModel
+    public class RegisterBindingModel // this is where you will put the properties from AppUserCreate
     {
         [Required]
         [Display(Name = "Email")]
@@ -48,6 +50,33 @@ namespace Blue_Badge_Project.WebAPI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public DateTime DateJoined
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
+
+        // AppUserId
+        //public string UserId { get; set; }
+        // FirstName
+        public string FirstName { get; set; }
+        // LastName
+        public string LastName { get; set; }
+        // DoB
+        public DateTime DateOfBirth { get; set; }
+        // Height
+        public int HeightInCentimeters { get; set; }
+        // Weight
+        public int WeightInLbs { get; set; }
+        // Gender
+        public GenderEnum Gender { get; set; }
+        // Goal
+        public GoalEnum Goal { get; set; }
+        // BodyType
+        public BodyTypeEnum BodyType { get; set; }
+
     }
 
     public class RegisterExternalBindingModel

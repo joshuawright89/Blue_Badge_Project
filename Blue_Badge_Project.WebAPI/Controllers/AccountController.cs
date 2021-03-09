@@ -9,7 +9,7 @@ using System.Web.Http;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
@@ -17,6 +17,7 @@ using Blue_Badge_Project.WebAPI.Models;
 using Blue_Badge_Project.WebAPI.Providers;
 using Blue_Badge_Project.WebAPI.Results;
 using Blue_Badge_Project.Data;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Blue_Badge_Project.WebAPI.Controllers
 {
@@ -75,6 +76,8 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             return Ok();
         }
 
+
+
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
@@ -126,7 +129,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +262,9 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -322,14 +325,27 @@ namespace Blue_Badge_Project.WebAPI.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)  //POST method
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth,
+                DateJoined = model.DateJoined,
+                HeightInCentimeters = model.HeightInCentimeters,
+                WeightInLbs = model.WeightInLbs,
+                Gender = model.Gender,
+                Goal = model.Goal,
+                BodyType = model.BodyType
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -340,6 +356,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
 
             return Ok();
         }
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
@@ -369,7 +386,7 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

@@ -10,11 +10,11 @@ namespace Blue_Badge_Project.Services
 {
     public class SystemPlanService
     {
-        private readonly int _systemId;
+        private readonly string _userId;
 
-        public SystemPlanService(int sysId)
+        public SystemPlanService(string userId)
         {
-            _systemId = sysId;
+            _userId = userId;
         }
 
         public bool CreateSystemPlan(SystemPlanCreate plan)
@@ -23,9 +23,9 @@ namespace Blue_Badge_Project.Services
                 new SystemPlan()
                 {
                     SysId = plan.SysId,
-                    UserId = _systemId.ToString(),
-                    FitId = _systemId,
-                    DietId = _systemId,
+                    UserId = _userId,
+                    //FitId = _userId,
+                    //DietId = _userId,
                     StartingWeight = plan.StartingWeight,
                     PlanGoal = plan.PlanGoal,
                     CreatedUtc = DateTimeOffset.Now
@@ -67,8 +67,6 @@ namespace Blue_Badge_Project.Services
                     ctx
                     .SystemPlan
                     .Single(e => e.SysId == plan.SysId); 
-
-                //entity.Name = plan.Name;
                 entity.StartingWeight = plan.StartingWeight;
                 entity.PlanGoal = plan.PlanGoal;
 
@@ -99,7 +97,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .SystemPlan
-                        .Where(e => e.UserId == _systemId.ToString())
+                        .Where(e => e.UserId == _userId)
 
                         .Select(
                         e =>

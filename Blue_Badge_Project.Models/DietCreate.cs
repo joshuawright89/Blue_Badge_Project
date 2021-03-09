@@ -7,11 +7,20 @@ using System.Threading.Tasks;
 
 namespace Blue_Badge_Project.Models
 {
+
+    public enum DietRestrictions
+    {
+        Sugar = 1,
+        Gluten,
+        Carbs,
+        NoRestrictions
+    }
+
     public class DietCreate
     {
         
         public string Name { get; set; }
-        public string DietDesc { get; set; }
+        public string DietDescription { get; set; }
         
         public bool BalancedDiet { get; set; }
         
@@ -20,6 +29,8 @@ namespace Blue_Badge_Project.Models
         public bool Vegatarian { get; set; }
         
         public bool Carbo { get; set; }
+
+
         public DietRestrictions DietRestrictions { get; set; }
 
     }

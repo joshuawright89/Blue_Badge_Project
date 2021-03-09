@@ -10,11 +10,13 @@ namespace Blue_Badge_Project.Services
 {
     public class DietService
     {
-            private readonly int _dietId;
+        //private readonly int _dietId;
 
-            public DietService(int dietId)
+        private readonly string _userId;
+
+            public DietService(string userId)
             {
-                _dietId = dietId;
+                _userId = userId;
             }
             public bool CreateDiet(DietCreate model)
         {
@@ -22,38 +24,38 @@ namespace Blue_Badge_Project.Services
                 new DietPlan()
                 {
                     Name = model.Name,
-                    DietDesc = model.DietDesc,
+                    DietDescription = model.DietDescription,
                     BalancedDiet = model.BalancedDiet,
                     Protein = model.Protein,
                     Vegatarian = model.Vegatarian,
                     Carbo = model.Carbo,
-                    DietRestrictions = model.DietRestrictions,
+                    DietRestrictions = (DietRestriction) model.DietRestrictions,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.DietPlan.Add(entity);
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() > 1;
             }
         }
-        public DietDetail GetDietById(int dietId)
+        public DietDetail GetDietById(int DietId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == _dietId);
+                    .Single(e => e.DietId == DietId);
                 return 
                     new DietDetail
                     {
                         Name = entity.Name,
-                        DietDesc = entity.DietDesc,
+                        DietDescription = entity.DietDescription,
                         BalancedDiet = entity.BalancedDiet,
                         Protein = entity.Protein,
                         Vegatarian = entity.Vegatarian,
                         Carbo = entity.Carbo,
-                        DietRestrictions = entity.DietRestrictions,
+                        DietRestrictions = (DietRestriction) entity.DietRestrictions,
                         CreatedUtc = DateTimeOffset.Now
                     };
             }
@@ -66,17 +68,17 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .DietPlan
-                    .Single(e => e.DietId == _dietId);
+                    .Single(e => e.DietId == e.DietId);
 
                 entity.Name = model.Name;
-                entity.DietDesc = model.DietDesc;
+                entity.DietDescription = model.DietDescription;
                 entity.BalancedDiet = model.BalancedDiet;
                 entity.Protein = model.Protein;
                 entity.Vegatarian = model.Vegatarian;
                 entity.Carbo = model.Carbo;
-                entity.DietRestrictions = model.DietRestrictions;
+                entity.DietRestrictions = (DietRestriction) model.DietRestrictions;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                return ctx.SaveChanges() > 0;
+                return ctx.SaveChanges() > 1;
             }
         }
 
@@ -103,7 +105,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .DietPlan
-                        .Where(e => e.DietId == _dietId)
+                        .Where(e => e.UserId == _userId)
 
                         .Select(
                         e =>
@@ -111,7 +113,7 @@ namespace Blue_Badge_Project.Services
                         {
                             DietId = e.DietId,
                             Name = e.Name,
-                            DietDesc = e.DietDesc,
+                            DietDescription = e.DietDescription,
                             CreatedUtc = e.CreatedUtc,
                             
                         }

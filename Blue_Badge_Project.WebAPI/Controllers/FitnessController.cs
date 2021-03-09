@@ -15,9 +15,17 @@ using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
 namespace Blue_Badge_Project.WebAPI.Controllers
 {
-    
+
+    [System.Web.Http.Authorize]
     public class FitnessController : ApiController
     {
+        private FitnessService CreateFitnessService()
+        {
+            var userId = User.Identity.GetUserId();
+            var fitnessService = new FitnessService(userId);
+            return fitnessService;
+        }
+
         [HttpPost]
         public IHttpActionResult Post(FitnessCreate model)
         {
@@ -27,29 +35,19 @@ namespace Blue_Badge_Project.WebAPI.Controllers
             if (!service.CreateFitness(model))
                 return InternalServerError();
             return Ok();
-
-        }
-
-        private FitnessService CreateFitnessService()
-        {
-            var userId = int.Parse(User.Identity.GetUserId());
-            var fitnessService = new FitnessService(userId);
-            return fitnessService;
-
         }
         [HttpGet]
         public IHttpActionResult GetAll()
-       {
+        {
             FitnessService fitnessService = CreateFitnessService();
             var fitnessPlans = fitnessService.GetFitness();
                 return Ok(fitnessPlans);
-       }
-        [HttpGet]
-            
-       public IHttpActionResult GetId(int id)
+        }
+        [HttpGet] 
+       public IHttpActionResult GetId(int fitId)
        {
             FitnessService fitnessService = CreateFitnessService();
-            var plan = fitnessService.GetFitnessById(id);
+            var plan = fitnessService.GetFitnessById(fitId);
                 return Ok(plan);
        }
         [HttpPut]
@@ -64,7 +62,6 @@ namespace Blue_Badge_Project.WebAPI.Controllers
                 return Ok();
        }
         [HttpDelete]
-         
        public IHttpActionResult Delete(int fitId)
        {
             var service = CreateFitnessService();

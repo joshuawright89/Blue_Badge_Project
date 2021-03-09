@@ -10,12 +10,15 @@ namespace Blue_Badge_Project.Services
 {
     public class FitnessService 
     {
-        private readonly int _fitId;
+        //private readonly int _fitId;
 
-        public FitnessService(int fitId)
+        private readonly string _userId;
+
+        public FitnessService(string userId)
         {
-            _fitId = fitId;
+            _userId = userId;
         }
+
 
 
         public bool CreateFitness(FitnessCreate model)
@@ -24,6 +27,7 @@ namespace Blue_Badge_Project.Services
                 new FitnessPlan()
                 {
                     Name = model.Name,
+                    UserId = _userId,
                     FitDescription = model.FitDescription,
                     WeightLoss = model.WeightLoss,
                     MuscleGain = model.MuscleGain,
@@ -37,14 +41,14 @@ namespace Blue_Badge_Project.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public FitnessDetail GetFitnessById(int Id)
+        public FitnessDetail GetFitnessById(int FitId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == Id);
+                    .Single(e => e.FitId == FitId);
                 return
                    new FitnessDetail
                    {
@@ -66,7 +70,7 @@ namespace Blue_Badge_Project.Services
                 var entity =
                     ctx
                     .FitnessPlan
-                    .Single(e => e.FitId == model.FitId);
+                    .Single(e => e.FitId == e.FitId);
                     
                 entity.Name = model.Name;
                 entity.FitDescription = model.FitDescription;
@@ -98,7 +102,7 @@ namespace Blue_Badge_Project.Services
                 var query =
                     ctx
                         .FitnessPlan
-                        .Where(e => e.FitId == _fitId)
+                        .Where(e => e.UserId == _userId)
                         .Select(
                         e =>
                         new FitnessListItem

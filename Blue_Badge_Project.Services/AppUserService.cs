@@ -18,7 +18,7 @@ namespace Blue_Badge_Project.Services
             
         }
 
-        //This method is just creating another ApplicationUser, all of this can be done on Register, if you need to update the info just use the update methods.
+        
         public bool CreateAppUser(AppUserCreate model) 
         {
             var entity =
